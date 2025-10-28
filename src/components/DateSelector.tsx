@@ -11,8 +11,8 @@ export const DateSelector = ({
   onDateChange,
 }: DateSelectorProps) => {
   const dates = fixturesCalendar.map((fixture) => ({
-    day: fixture.day.slice(0, 2), // Extract the first two letters of the day
-    date: new Date(fixture.date).getDate(), // Extract the date of the day
+    day: fixture.day, // Use the day directly
+    date: fixture.date, // Use the date directly as a number
   }));
 
   return (

@@ -49,6 +49,16 @@ const Index = () => {
     },
   ];
 
+  const fixturesCalendar = [
+    { day: "Mon", date: 13 },
+    { day: "Tue", date: 14 },
+    { day: "Wed", date: 15 },
+    { day: "Thu", date: 16 },
+    { day: "Fri", date: 17 },
+    { day: "Sat", date: 18 },
+    { day: "Sun", date: 19 },
+  ];
+
   if (selectedMatch) {
     return <MatchDetail onBack={() => setSelectedMatch(null)} />;
   }
@@ -77,8 +87,7 @@ const Index = () => {
         <div className="px-4 pb-4">
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-medium text-muted-foreground">
-              {new Date().toLocaleString("default", { month: "short" })}{" "}
-              {selectedDate}, 2025
+              November
             </span>
           </div>
           <DateSelector
@@ -121,6 +130,30 @@ const Index = () => {
                 onClick={() => setSelectedMatch(match.id)}
               />
             ))}
+          </div>
+        </section>
+
+        {/* Calendar */}
+        <section>
+          <div className="flex flex-col gap-4">
+            <span className="text-lg font-bold text-muted-foreground">
+              November
+            </span>
+            <div className="grid grid-cols-2 gap-4">
+              {fixturesCalendar.map((fixture) => (
+                <div
+                  key={fixture.date}
+                  className="p-4 bg-card rounded-lg shadow-md text-center"
+                >
+                  <span className="block text-sm font-medium text-muted-foreground">
+                    {fixture.day}
+                  </span>
+                  <span className="block text-lg font-bold">
+                    {fixture.date}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </main>
