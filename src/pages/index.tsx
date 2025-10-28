@@ -6,6 +6,7 @@ import { MatchListItem } from "@/components/MatchListItem";
 import { Navigation } from "@/components/Navigation";
 import { DateSelector } from "@/components/DateSelector";
 import { MatchDetail } from "./match-detail";
+import { fixturesCalendar } from "@/data/fixturesCalendar";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("home");
@@ -49,15 +50,7 @@ const Index = () => {
     },
   ];
 
-  const fixturesCalendar = [
-    { day: "Mon", date: 13 },
-    { day: "Tue", date: 14 },
-    { day: "Wed", date: 15 },
-    { day: "Thu", date: 16 },
-    { day: "Fri", date: 17 },
-    { day: "Sat", date: 18 },
-    { day: "Sun", date: 19 },
-  ];
+  const month = fixturesCalendar[0]?.month || "";
 
   if (selectedMatch) {
     return <MatchDetail onBack={() => setSelectedMatch(null)} />;
@@ -87,7 +80,7 @@ const Index = () => {
         <div className="px-4 pb-4">
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-medium text-muted-foreground">
-              November
+              {month}
             </span>
           </div>
           <DateSelector
@@ -137,7 +130,7 @@ const Index = () => {
         <section>
           <div className="flex flex-col gap-4">
             <span className="text-lg font-bold text-muted-foreground">
-              November
+              {month}
             </span>
             <div className="grid grid-cols-2 gap-4">
               {fixturesCalendar.map((fixture) => (
