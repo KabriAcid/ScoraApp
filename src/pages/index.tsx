@@ -5,7 +5,7 @@ import { MatchCard } from "@/components/MatchCard";
 import { MatchListItem } from "@/components/MatchListItem";
 import { Navigation } from "@/components/Navigation";
 import { DateSelector } from "@/components/DateSelector";
-import MatchDetail from "./match-detail";
+import { MatchDetail } from "./match-detail";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("home");
