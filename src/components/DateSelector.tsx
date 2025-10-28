@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { fixturesCalendar } from "@/data/fixturesCalendar";
 
 interface DateSelectorProps {
   selectedDate: number;
@@ -9,12 +10,14 @@ export const DateSelector = ({
   selectedDate,
   onDateChange,
 }: DateSelectorProps) => {
-  const dates = [15, 16, 17, 18, 19, 20, 21, 22];
-  const days = ["We", "Th", "Fr", "Sa", "Su", "Mo", "Tu", "We"];
+  const dates = fixturesCalendar.map((fixture) => ({
+    day: fixture.day.slice(0, 2), // Extract the first two letters of the day
+    date: new Date(fixture.date).getDate(), // Extract the date of the day
+  }));
 
   return (
     <div className="flex gap-2 overflow-x-auto pb-2 px-1">
-      {dates.map((date, index) => (
+      {dates.map(({ date, day }, index) => (
         <button
           key={date}
           onClick={() => onDateChange(date)}
@@ -25,7 +28,7 @@ export const DateSelector = ({
               : "bg-card text-foreground hover:bg-secondary"
           )}
         >
-          <span className="text-xs font-medium mb-1">{days[index]}</span>
+          <span className="text-xs font-medium mb-1">{day}</span>
           <span className="text-lg font-bold">{date}</span>
         </button>
       ))}

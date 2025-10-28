@@ -1,0 +1,17 @@
+export const fixturesCalendar = [
+  { month: "November", day: "Sa", date: "01" },
+  { month: "November", day: "Su", date: "02" },
+  { month: "November", day: "We", date: "04" },
+  { month: "November", day: "Sa", date: "08" },
+  { month: "November", day: "Su", date: "09" },
+  { month: "November", day: "Mo", date: "11" },
+  { month: "November", day: "Sa", date: "15" },
+  { month: "November", day: "Su", date: "16" },
+  { month: "November", day: "We", date: "18" },
+  { month: "November", day: "Sa", date: "22" },
+  { month: "November", day: "Su", date: "23" },
+  { month: "November", day: "Mo", date: "25" },
+  { month: "November", day: "Tu", date: "26" },
+  { month: "November", day: "Th", date: "27" },
+  { month: "November", day: "Fr", date: "28" },
+];

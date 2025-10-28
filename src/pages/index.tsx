@@ -77,7 +77,8 @@ const Index = () => {
         <div className="px-4 pb-4">
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-medium text-muted-foreground">
-              Oct 11, 2022
+              {new Date().toLocaleString("default", { month: "short" })}{" "}
+              {selectedDate}, 2025
             </span>
           </div>
           <DateSelector
