@@ -126,6 +126,6 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    font-family: Ginto, sans-serif!important;
+    font-family: Ginto, sans-serif;
   }
 }
