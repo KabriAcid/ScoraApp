@@ -61,7 +61,7 @@ const Index = () => {
           <Button variant="ghost" size="icon">
             <Menu className="w-5 h-5" />
           </Button>
-          <h1 className="text-xl font-bold">Liveuy</h1>
+          <h1 className="text-xl font-bold">Scora</h1>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" className="relative">
               <Bell className="w-5 h-5" />
