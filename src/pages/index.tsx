@@ -11,7 +11,9 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState("home");
   const [selectedDate, setSelectedDate] = useState(17);
   const [selectedMatch, setSelectedMatch] = useState<string | null>(null);
-  const [fixturesCalendar, setFixturesCalendar] = useState([]);
+  const [fixturesCalendar, setFixturesCalendar] = useState<
+    { date: number; day: string; month?: string }[]
+  >([]);
 
   const featuredMatch = {
     id: "1",
