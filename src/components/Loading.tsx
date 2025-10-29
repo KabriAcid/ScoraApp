@@ -1,7 +1,7 @@
 import React from "react";
 
 const Loading: React.FC = () => (
-  <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background/80 backdrop-blur-sm">
+  <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/50 backdrop-blur-sm">
     <svg
       width="80"
       height="80"
