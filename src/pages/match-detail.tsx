@@ -6,63 +6,20 @@ import { Card } from "@/components/ui/card";
 import Image from "next/image";
 
 interface MatchDetailProps {
+  match: any;
   onBack: () => void;
 }
 
-export const MatchDetail = ({ onBack }: MatchDetailProps) => {
-  const homeTeamData = {
-    manager: "Graham Potter",
-    formation: "4-3-3",
-    lineup: [
-      { name: "Kepa Arrizabalaga", number: 1 },
-      { name: "Reece James", number: 24 },
-      { name: "Thiago Silva", number: 6 },
-      { name: "Kalidou Koulibaly", number: 26 },
-      { name: "Ben Chilwell", number: 21 },
-      { name: "Enzo Fernandez", number: 5 },
-      { name: "Mateo Kovacic", number: 8 },
-      { name: "Mason Mount", number: 19 },
-      { name: "Kai Havertz", number: 29 },
-      { name: "Raheem Sterling", number: 17 },
-      { name: "Pierre-Emerick Aubameyang", number: 9 },
-    ],
-    substitutes: [
-      { name: "Edouard Mendy", number: 16 },
-      { name: "Cesar Azpilicueta", number: 28 },
-      { name: "Jorginho", number: 23 },
-      { name: "Christian Pulisic", number: 10 },
-      { name: "Hakim Ziyech", number: 22 },
-      { name: "Conor Gallagher", number: 30 },
-      { name: "Armando Broja", number: 18 },
-    ],
-  };
-
-  const awayTeamData = {
-    manager: "E. ten Hag",
-    formation: "4-2-3-1",
-    lineup: [
-      { name: "David de Gea", number: 1 },
-      { name: "Diogo Dalot", number: 20 },
-      { name: "Raphael Varane", number: 19 },
-      { name: "Lisandro Martinez", number: 6 },
-      { name: "Luke Shaw", number: 23 },
-      { name: "Casemiro", number: 18 },
-      { name: "Christian Eriksen", number: 14 },
-      { name: "Antony", number: 21 },
-      { name: "Bruno Fernandes", number: 8 },
-      { name: "Jadon Sancho", number: 25 },
-      { name: "Marcus Rashford", number: 10 },
-    ],
-    substitutes: [
-      { name: "Tom Heaton", number: 22 },
-      { name: "Harry Maguire", number: 5 },
-      { name: "Fred", number: 17 },
-      { name: "Scott McTominay", number: 39 },
-      { name: "Anthony Martial", number: 9 },
-      { name: "Alejandro Garnacho", number: 49 },
-      { name: "Facundo Pellistri", number: 28 },
-    ],
-  };
+export const MatchDetail = ({ match, onBack }: MatchDetailProps) => {
+  if (!match) {
+    // Ideally show a loading or not found state
+    return (
+      <div className="flex items-center justify-center h-screen">
+        Match not found.
+      </div>
+    );
+  }
+  const { homeTeam, awayTeam, stadium, homeLogo, awayLogo, homeScore, awayScore, homeTeamData, awayTeamData } = match;
 
   return (
     <div
@@ -93,7 +50,7 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
         </div>
 
         <div className="text-center mb-4">
-          <p className="text-sm text-primary-foreground/70 mb-2">Stamford Bridge</p>
+          <p className="text-sm text-primary-foreground/70 mb-2">{stadium}</p>
           <Badge className="bg-success text-success-foreground mb-4">LIVE</Badge>
         </div>
 
@@ -101,22 +58,22 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
         <div className="flex items-center justify-center gap-8 mb-4">
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center mb-2 font-bold text-2xl text-foreground overflow-hidden">
-              <Image src="https://ssl.gstatic.com/onebox/media/sports/logos/0i2_A1PMGHflrIe3umGD2A_96x96.png" alt="Chelsea logo" width={56} height={56} className="object-contain"/>
+              <Image src={homeLogo} alt={`${homeTeam} logo`} width={56} height={56} className="object-contain"/>
             </div>
-            <span className="text-sm font-medium">Chelsea</span>
+            <span className="text-sm font-medium">{homeTeam}</span>
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-5xl font-bold">1</span>
+            <span className="text-5xl font-bold">{homeScore}</span>
             <span className="text-3xl text-primary-foreground/50">:</span>
-            <span className="text-5xl font-bold">1</span>
+            <span className="text-5xl font-bold">{awayScore}</span>
           </div>
 
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center mb-2 font-bold text-2xl text-foreground overflow-hidden">
-              <Image src="https://ssl.gstatic.com/onebox/media/sports/logos/udQ6ns69i-jBs_RxASrasQ_96x96.png" alt="Man Utd logo" width={56} height={56} className="object-contain"/>
+              <Image src={awayLogo} alt={`${awayTeam} logo`} width={56} height={56} className="object-contain"/>
             </div>
-            <span className="text-sm font-medium">Man Utd</span>
+            <span className="text-sm font-medium">{awayTeam}</span>
           </div>
         </div>
       </div>
@@ -144,13 +101,13 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
                     </div>
                     <div>
                       <p className="text-sm font-semibold">{homeTeamData.manager}</p>
-                      <p className="text-xs text-muted-foreground">Chelsea Manager</p>
+                      <p className="text-xs text-muted-foreground">{homeTeam} Manager</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="text-right">
                       <p className="text-sm font-semibold">{awayTeamData.manager}</p>
-                      <p className="text-xs text-muted-foreground">Man Utd Manager</p>
+                      <p className="text-xs text-muted-foreground">{awayTeam} Manager</p>
                     </div>
                     <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
                       <span className="text-sm font-bold text-red-600">EH</span>
