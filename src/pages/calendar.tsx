@@ -1,5 +1,5 @@
 'use client';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -7,6 +7,7 @@ import { Navigation } from "@/components/Navigation";
 import { calendarMatchesData } from "@/data/calendarMatches";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
+import Loading from "@/components/Loading";
 
 interface Match {
   id: string;
@@ -42,20 +43,33 @@ const CalendarMatchItem = ({ match }: { match: Match }) => (
 
 const CalendarPage = () => {
   const [matchweek, setMatchweek] = useState(10);
+  const [loading, setLoading] = useState(true);
+  const [matchGroups, setMatchGroups] = useState<MatchGroup[]>([]);
 
-  const groupedMatches = calendarMatchesData.reduce((acc, match) => {
-    const date = match.date;
-    if (!acc[date]) {
-      acc[date] = [];
-    }
-    acc[date].push(match);
-    return acc;
-  }, {} as Record<string, typeof calendarMatchesData>);
+  useEffect(() => {
+    // Simulate data fetching
+    setTimeout(() => {
+      const groupedMatches = calendarMatchesData.reduce((acc, match) => {
+        const date = match.date;
+        if (!acc[date]) {
+          acc[date] = [];
+        }
+        acc[date].push(match);
+        return acc;
+      }, {} as Record<string, typeof calendarMatchesData>);
 
-  const matchGroups: MatchGroup[] = Object.keys(groupedMatches).map(date => ({
-    date: date,
-    matches: groupedMatches[date]
-  }));
+      const groups: MatchGroup[] = Object.keys(groupedMatches).map(date => ({
+        date: date,
+        matches: groupedMatches[date]
+      }));
+      setMatchGroups(groups);
+      setLoading(false);
+    }, 1000);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="min-h-screen bg-background pb-20">
