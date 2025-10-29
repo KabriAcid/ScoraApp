@@ -8,10 +8,11 @@ interface MatchCardProps {
   homeScore: number;
   awayScore: number;
   status: "live" | "finished" | "upcoming";
-  league: string;
   homeLogo?: string;
   awayLogo?: string;
   matchTime?: number;
+  stadium?: string;
+  matchWeek?: string;
   onClick?: () => void;
 }
 
@@ -21,10 +22,11 @@ export const MatchCard = ({
   homeScore,
   awayScore,
   status,
-  league,
   homeLogo,
   awayLogo,
   matchTime,
+  stadium,
+  matchWeek,
   onClick,
 }: MatchCardProps) => {
   return (
@@ -38,15 +40,9 @@ export const MatchCard = ({
         onClick={onClick}
       >
         <div className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-sm text-primary-foreground/70 font-medium">
-              {league}
-            </span>
-            {status === "live" && (
-              <Badge className="bg-success text-success-foreground px-3 py-1 animate-pulse">
-                LIVE
-              </Badge>
-            )}
+          <div className="text-center mb-4">
+            {stadium && <p className="text-sm font-semibold text-primary-foreground/90">{stadium}</p>}
+            {matchWeek && <p className="text-xs text-primary-foreground/60">{matchWeek}</p>}
           </div>
 
           <div className="flex items-center justify-between">
@@ -84,14 +80,19 @@ export const MatchCard = ({
                   {awayScore}
                 </span>
               </div>
-              {status === "live" && matchTime && (
-                <div className="mt-2">
-                  <Badge
-                    variant="outline"
-                    className="border-success/30 bg-success/10 text-success"
-                  >
-                    {matchTime}'
+              {status === "live" && (
+                <div className="mt-2 flex flex-col items-center gap-2">
+                  <Badge className="bg-success text-success-foreground px-3 py-1">
+                    LIVE
                   </Badge>
+                  {matchTime && (
+                    <Badge
+                      variant="outline"
+                      className="border-success/30 bg-success/10 text-success"
+                    >
+                      {matchTime}'
+                    </Badge>
+                  )}
                 </div>
               )}
             </div>

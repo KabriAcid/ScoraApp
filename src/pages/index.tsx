@@ -25,6 +25,8 @@ const Index = () => {
     homeLogo: "/chelsea.png",
     awayLogo: "/man-utd.png",
     matchTime: 62,
+    stadium: "Stamford Bridge",
+    matchWeek: "Week 10",
   };
 
   const liveMatches = [
