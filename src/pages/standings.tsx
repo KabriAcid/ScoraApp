@@ -8,19 +8,10 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { RefreshCw } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { standingsData } from "@/data/standings";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface TeamStanding {
   position: number;
@@ -105,21 +96,24 @@ const StandingsPage = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-[50px]">Pos</TableHead>
-                  <TableHead>Team</TableHead>
-                  <TableHead className="text-right">Pl</TableHead>
-                  <TableHead className="text-right hidden sm:table-cell">W</TableHead>
-                  <TableHead className="text-right hidden sm:table-cell">D</TableHead>
-                  <TableHead className="text-right hidden sm:table-cell">L</TableHead>
-                  <TableHead className="text-right">Pts</TableHead>
-                  <TableHead className="text-center hidden md:table-cell">Form</TableHead>
+                  <TableHead className="w-[40px] p-2">Pos</TableHead>
+                  <TableHead className="p-2">Team</TableHead>
+                  <TableHead className="text-right p-2">Pl</TableHead>
+                  <TableHead className="text-right p-2 hidden sm:table-cell">W</TableHead>
+                  <TableHead className="text-right p-2 hidden sm:table-cell">D</TableHead>
+                  <TableHead className="text-right p-2 hidden sm:table-cell">L</TableHead>
+                  <TableHead className="text-right p-2 hidden md:table-cell">GF</TableHead>
+                  <TableHead className="text-right p-2 hidden md:table-cell">GA</TableHead>
+                  <TableHead className="text-right p-2">GD</TableHead>
+                  <TableHead className="text-right p-2">Pts</TableHead>
+                  <TableHead className="p-2 text-center hidden lg:table-cell">Form</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {standings.map((entry) => (
                   <TableRow key={entry.position}>
-                    <TableCell className="font-medium">{entry.position}</TableCell>
-                    <TableCell>
+                    <TableCell className="font-medium p-2">{entry.position}</TableCell>
+                    <TableCell className="p-2">
                       <div className="flex items-center gap-2">
                         <Image
                           src={entry.team.logo}
@@ -132,12 +126,15 @@ const StandingsPage = () => {
                         <span className="sm:hidden">{entry.team.name.substring(0,3).toUpperCase()}</span>
                       </div>
                     </TableCell>
-                    <TableCell className="text-right">{entry.played}</TableCell>
-                    <TableCell className="text-right hidden sm:table-cell">{entry.win}</TableCell>
-                    <TableCell className="text-right hidden sm:table-cell">{entry.draw}</TableCell>
-                    <TableCell className="text-right hidden sm:table-cell">{entry.loss}</TableCell>
-                    <TableCell className="text-right font-bold">{entry.points}</TableCell>
-                    <TableCell className="hidden md:table-cell">
+                    <TableCell className="text-right p-2">{entry.played}</TableCell>
+                    <TableCell className="text-right p-2 hidden sm:table-cell">{entry.win}</TableCell>
+                    <TableCell className="text-right p-2 hidden sm:table-cell">{entry.draw}</TableCell>
+                    <TableCell className="text-right p-2 hidden sm:table-cell">{entry.loss}</TableCell>
+                    <TableCell className="text-right p-2 hidden md:table-cell">{entry.gf}</TableCell>
+                    <TableCell className="text-right p-2 hidden md:table-cell">{entry.ga}</TableCell>
+                    <TableCell className="text-right p-2">{entry.gd}</TableCell>
+                    <TableCell className="text-right font-bold p-2">{entry.points}</TableCell>
+                    <TableCell className="hidden lg:table-cell p-2">
                       <div className="flex gap-1 justify-center">
                         {entry.form.map((result, index) => (
                           <FormBadge key={index} result={result} />
