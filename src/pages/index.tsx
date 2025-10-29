@@ -22,8 +22,8 @@ const Index = () => {
     awayScore: 1,
     status: "live" as const,
     league: "Premier League",
-    homeLogo: "/chelsea.png",
-    awayLogo: "/man-utd.png",
+    homeLogo: "https://picsum.photos/seed/1/56/56",
+    awayLogo: "https://picsum.photos/seed/2/56/56",
     matchTime: 62,
     stadium: "Stamford Bridge",
     matchWeek: "Week 10",
@@ -37,8 +37,8 @@ const Index = () => {
       homeScore: 0,
       awayScore: 3,
       status: "live" as const,
-      homeLogo: "/n-forest.png",
-      awayLogo: "/liverpool.png",
+      homeLogo: "https://picsum.photos/seed/3/32/32",
+      awayLogo: "https://picsum.photos/seed/4/32/32",
     },
     {
       id: "3",
@@ -47,8 +47,8 @@ const Index = () => {
       homeScore: 2,
       awayScore: 1,
       status: "live" as const,
-      homeLogo: "/man-city.png",
-      awayLogo: "/brighton.png",
+      homeLogo: "https://picsum.photos/seed/5/32/32",
+      awayLogo: "https://picsum.photos/seed/6/32/32",
     },
     {
       id: "4",
@@ -57,8 +57,8 @@ const Index = () => {
       homeScore: 1,
       awayScore: 0,
       status: "live" as const,
-      homeLogo: "/wolves.png",
-      awayLogo: "/leicester.png",
+      homeLogo: "https://picsum.photos/seed/7/32/32",
+      awayLogo: "https://picsum.photos/seed/8/32/32",
     },
   ];
 
