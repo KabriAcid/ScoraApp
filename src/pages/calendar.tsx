@@ -5,9 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { calendarMatchesData, pastCalendarMatchesData } from "@/data/calendarMatches";
 import Image from "next/image";
-import { Separator } from "@/components/ui/separator";
 import Loading from "@/components/Loading";
-import { Badge } from "@/components/ui/badge";
 
 interface Match {
   id: string;
@@ -27,7 +25,7 @@ interface MatchGroup {
 }
 
 const CalendarMatchItem = ({ match }: { match: Match }) => (
-  <div className="flex items-center justify-between p-4 bg-card rounded-xl">
+  <div className="flex items-center justify-between p-2">
     <div className="flex items-center gap-4 flex-1 justify-end">
       <span className="font-semibold text-sm text-right">{match.homeTeam}</span>
       <Image src={match.homeLogo} alt={match.homeTeam} width={28} height={28} />
@@ -38,9 +36,6 @@ const CalendarMatchItem = ({ match }: { match: Match }) => (
             <span className="text-lg font-bold text-foreground">
               {match.homeScore} - {match.awayScore}
             </span>
-            <Badge variant="outline" className="text-xs mt-1">
-              FT
-            </Badge>
         </div>
       ) : (
         <span className="text-sm font-bold text-muted-foreground bg-secondary px-3 py-1 rounded-full">
@@ -114,11 +109,11 @@ const CalendarPage = () => {
         </div>
       </header>
 
-      <main className="p-4 space-y-6">
+      <main className="p-4 space-y-4">
         {matchGroups.map((group, index) => (
           <div key={index}>
             <h2 className="font-bold text-sm mb-2 px-2">{group.date}</h2>
-            <div className="space-y-3">
+            <div className="space-y-2">
               {group.matches.map((match) => (
                   <CalendarMatchItem key={match.id} match={match} />
               ))}
