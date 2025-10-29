@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 
 interface Match {
   id: string;
+  date: string;
   homeTeam: string;
   awayTeam: string;
   time?: string;
@@ -73,7 +74,7 @@ const CalendarPage = () => {
         if (!acc[date]) {
           acc[date] = [];
         }
-        acc[date].push(match);
+        acc[date].push(match as Match);
         return acc;
       }, {} as Record<string, Match[]>);
 
@@ -113,14 +114,16 @@ const CalendarPage = () => {
 
       <main className="p-4 space-y-4">
         {matchGroups.map((group, groupIndex) => (
-          <Card key={groupIndex}>
-            <h2 className="font-bold text-sm mb-2 px-4 pt-4">{group.date}</h2>
-            <div className="space-y-0">
-              {group.matches.map((match, matchIndex) => (
-                  <CalendarMatchItem key={match.id} match={match} isLast={matchIndex === group.matches.length - 1} />
-              ))}
-            </div>
-          </Card>
+          <div key={groupIndex}>
+            <h2 className="font-bold text-sm mb-2 px-4">{group.date}</h2>
+            <Card>
+              <div className="space-y-0">
+                {group.matches.map((match, matchIndex) => (
+                    <CalendarMatchItem key={match.id} match={match} isLast={matchIndex === group.matches.length - 1} />
+                ))}
+              </div>
+            </Card>
+          </div>
         ))}
       </main>
 
