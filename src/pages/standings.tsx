@@ -123,8 +123,7 @@ const StandingsPage = () => {
                           height={24}
                           className="object-contain"
                         />
-                        <span className="hidden sm:inline">{entry.team.responsiveName}</span>
-                        <span className="sm:hidden">{entry.team.shortName.toUpperCase()}</span>
+                        <span>{entry.team.responsiveName}</span>
                       </div>
                     </TableCell>
                     <TableCell className="text-right p-2">{entry.played}</TableCell>
