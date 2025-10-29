@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { MatchCard } from "@/components/MatchCard";
 import { MatchListItem } from "@/components/MatchListItem";
 import { Navigation } from "@/components/Navigation";
-import { Skeleton } from "@/components/ui/skeleton";
 import { fixturesCalendar } from "@/data/fixturesCalendar";
 import { matchesData } from "@/data/matches";
 import { useRouter } from "next/router";
@@ -46,7 +45,7 @@ const Index = () => {
         <div className="px-4 pb-4">
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-medium text-muted-foreground">
-              {fixturesCalendar[0]?.month || ""}
+              {fixturesCalendar[0]?.month ?? ""}
             </span>
           </div>
           <div className="flex gap-2 overflow-x-auto pb-2 px-1">
