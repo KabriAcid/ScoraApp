@@ -2,20 +2,23 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Navigation } from "@/components/Navigation";
-import { calendarMatchesData } from "@/data/calendarMatches";
+import { calendarMatchesData, pastCalendarMatchesData } from "@/data/calendarMatches";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import Loading from "@/components/Loading";
+import { Badge } from "@/components/ui/badge";
 
 interface Match {
   id: string;
   homeTeam: string;
   awayTeam: string;
-  time: string;
+  time?: string;
   homeLogo: string;
   awayLogo: string;
+  homeScore?: number;
+  awayScore?: number;
+  status: "upcoming" | "finished";
 }
 
 interface MatchGroup {
@@ -24,15 +27,26 @@ interface MatchGroup {
 }
 
 const CalendarMatchItem = ({ match }: { match: Match }) => (
-  <div className="flex items-center justify-between p-4">
+  <div className="flex items-center justify-between p-4 bg-card rounded-xl">
     <div className="flex items-center gap-4 flex-1 justify-end">
       <span className="font-semibold text-sm text-right">{match.homeTeam}</span>
       <Image src={match.homeLogo} alt={match.homeTeam} width={28} height={28} />
     </div>
     <div className="text-center mx-4">
-      <span className="text-sm font-bold text-muted-foreground bg-secondary px-3 py-1 rounded-full">
-        {match.time}
-      </span>
+      {match.status === 'finished' ? (
+        <div className="flex flex-col items-center">
+            <span className="text-lg font-bold text-foreground">
+              {match.homeScore} - {match.awayScore}
+            </span>
+            <Badge variant="outline" className="text-xs mt-1">
+              FT
+            </Badge>
+        </div>
+      ) : (
+        <span className="text-sm font-bold text-muted-foreground bg-secondary px-3 py-1 rounded-full">
+          {match.time}
+        </span>
+      )}
     </div>
     <div className="flex items-center gap-4 flex-1">
       <Image src={match.awayLogo} alt={match.awayTeam} width={28} height={28} />
@@ -45,18 +59,26 @@ const CalendarPage = () => {
   const [matchweek, setMatchweek] = useState(10);
   const [loading, setLoading] = useState(true);
   const [matchGroups, setMatchGroups] = useState<MatchGroup[]>([]);
+  const [currentDateRange, setCurrentDateRange] = useState("Sat 1 Nov - Mon 3 Nov");
 
-  useEffect(() => {
-    // Simulate data fetching
+  const loadMatches = (week: number) => {
+    setLoading(true);
     setTimeout(() => {
-      const groupedMatches = calendarMatchesData.reduce((acc, match) => {
+      const data = week < 10 ? pastCalendarMatchesData : calendarMatchesData;
+      if(week < 10) {
+        setCurrentDateRange("Sat 25 Oct - Mon 27 Oct");
+      } else {
+        setCurrentDateRange("Sat 1 Nov - Mon 3 Nov");
+      }
+
+      const groupedMatches = data.reduce((acc, match) => {
         const date = match.date;
         if (!acc[date]) {
           acc[date] = [];
         }
         acc[date].push(match);
         return acc;
-      }, {} as Record<string, typeof calendarMatchesData>);
+      }, {} as Record<string, Match[]>);
 
       const groups: MatchGroup[] = Object.keys(groupedMatches).map(date => ({
         date: date,
@@ -64,8 +86,12 @@ const CalendarPage = () => {
       }));
       setMatchGroups(groups);
       setLoading(false);
-    }, 1000);
-  }, []);
+    }, 500);
+  };
+
+  useEffect(() => {
+    loadMatches(matchweek);
+  }, [matchweek]);
 
   if (loading) {
     return <Loading />;
@@ -75,12 +101,12 @@ const CalendarPage = () => {
     <div className="min-h-screen bg-background pb-20">
       <header className="p-4 border-b sticky top-0 bg-background z-10">
         <div className="flex items-center justify-between">
-          <Button variant="ghost" size="icon" onClick={() => setMatchweek(w => w > 1 ? w - 1 : 1)}>
+          <Button variant="ghost" size="icon" onClick={() => setMatchweek(w => w - 1)}>
             <ChevronLeft className="w-5 h-5" />
           </Button>
           <div className="text-center">
             <h1 className="font-bold">Matchweek {matchweek}</h1>
-            <p className="text-xs text-muted-foreground">Sat 1 Nov - Mon 3 Nov</p>
+            <p className="text-xs text-muted-foreground">{currentDateRange}</p>
           </div>
           <Button variant="ghost" size="icon" onClick={() => setMatchweek(w => w + 1)}>
             <ChevronRight className="w-5 h-5" />
@@ -92,14 +118,11 @@ const CalendarPage = () => {
         {matchGroups.map((group, index) => (
           <div key={index}>
             <h2 className="font-bold text-sm mb-2 px-2">{group.date}</h2>
-            <Card>
-              {group.matches.map((match, matchIndex) => (
-                <div key={match.id}>
-                  <CalendarMatchItem match={match} />
-                  {matchIndex < group.matches.length - 1 && <Separator />}
-                </div>
+            <div className="space-y-3">
+              {group.matches.map((match) => (
+                  <CalendarMatchItem key={match.id} match={match} />
               ))}
-            </Card>
+            </div>
           </div>
         ))}
       </main>
