@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { calendarMatchesData, pastCalendarMatchesData } from "@/data/calendarMatches";
 import Image from "next/image";
-import Loading from "@/components/Loading";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface Match {
   id: string;
@@ -26,6 +26,22 @@ interface MatchGroup {
   date: string;
   matches: Match[];
 }
+
+const CalendarMatchItemSkeleton = ({ isLast }: { isLast: boolean }) => (
+    <div className={cn("flex items-center justify-between p-4", !isLast && "border-b border-border")}>
+      <div className="flex items-center gap-4 flex-1 justify-end">
+        <Skeleton className="h-5 w-20" />
+        <Skeleton className="h-7 w-7 rounded-full" />
+      </div>
+      <div className="text-center mx-4">
+        <Skeleton className="h-6 w-16" />
+      </div>
+      <div className="flex items-center gap-4 flex-1">
+        <Skeleton className="h-7 w-7 rounded-full" />
+        <Skeleton className="h-5 w-20" />
+      </div>
+    </div>
+  );
 
 const CalendarMatchItem = ({ match, isLast }: { match: Match, isLast: boolean }) => (
   <div className={cn("flex items-center justify-between p-4", !isLast && "border-b border-border")}>
@@ -91,10 +107,6 @@ const CalendarPage = () => {
     loadMatches(matchweek);
   }, [matchweek]);
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
     <div className="min-h-screen bg-background pb-20">
       <header className="p-4 border-b sticky top-0 bg-background z-10">
@@ -113,18 +125,34 @@ const CalendarPage = () => {
       </header>
 
       <main className="p-4 space-y-4">
-        {matchGroups.map((group, groupIndex) => (
-          <div key={groupIndex}>
-            <h2 className="font-bold text-sm mb-2 px-4">{group.date}</h2>
+      {loading ? (
+          <div className="space-y-4">
+            <Skeleton className="h-6 w-32 mb-2" />
             <Card>
-              <div className="space-y-0">
-                {group.matches.map((match, matchIndex) => (
-                    <CalendarMatchItem key={match.id} match={match} isLast={matchIndex === group.matches.length - 1} />
-                ))}
-              </div>
+                <CalendarMatchItemSkeleton isLast={false} />
+                <CalendarMatchItemSkeleton isLast={false} />
+                <CalendarMatchItemSkeleton isLast={true} />
+            </Card>
+             <Skeleton className="h-6 w-32 mb-2" />
+            <Card>
+                <CalendarMatchItemSkeleton isLast={false} />
+                <CalendarMatchItemSkeleton isLast={true} />
             </Card>
           </div>
-        ))}
+        ) : (
+          matchGroups.map((group, groupIndex) => (
+            <div key={groupIndex}>
+              <h2 className="font-bold text-sm mb-2 px-4">{group.date}</h2>
+              <Card>
+                <div className="space-y-0">
+                  {group.matches.map((match, matchIndex) => (
+                      <CalendarMatchItem key={match.id} match={match} isLast={matchIndex === group.matches.length - 1} />
+                  ))}
+                </div>
+              </Card>
+            </div>
+          ))
+        )}
       </main>
 
       <Navigation />
