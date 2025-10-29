@@ -146,7 +146,7 @@ const Index = () => {
             <Button
               variant="ghost"
               size="sm"
-              className="text-accent hover:text-accent"
+              className="text-accent hover:text-accent-foreground"
             >
               View All →
             </Button>
