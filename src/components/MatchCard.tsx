@@ -67,7 +67,7 @@ export const MatchCard = ({
               </div>
               <div className="text-center">
                 <span className="text-primary-foreground font-semibold">
-                  {homeTeam.name}
+                  {homeTeam.shortName}
                 </span>
                 <p className="text-xs text-muted-foreground">Home</p>
               </div>
@@ -113,7 +113,7 @@ export const MatchCard = ({
               </div>
               <div className="text-center">
                 <span className="text-primary-foreground font-semibold">
-                  {awayTeam.name}
+                  {awayTeam.shortName}
                 </span>
                 <p className="text-xs text-muted-foreground">Away</p>
               </div>

@@ -46,7 +46,7 @@ export const MatchListItem = ({
             homeTeam.shortName.substring(0, 2).toUpperCase()
           )}
         </div>
-        <span className="font-medium text-sm">{homeTeam.name}</span>
+        <span className="font-medium text-sm">{homeTeam.shortName}</span>
       </div>
 
       <div className="flex items-center gap-3 mx-4">
@@ -75,7 +75,7 @@ export const MatchListItem = ({
       </div>
 
       <div className="flex items-center gap-3 flex-1 justify-end">
-        <span className="font-medium text-sm text-right">{awayTeam.name}</span>
+        <span className="font-medium text-sm text-right">{awayTeam.shortName}</span>
         <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-xs font-bold overflow-hidden">
           {awayBadge ? (
             <Image

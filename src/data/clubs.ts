@@ -8,129 +8,129 @@ export interface PremierLeagueClub {
 export const premierLeagueClubs: PremierLeagueClub[] = [
   {
     name: "West Ham United",
-    shortName: "WHU",
+    shortName: "West Ham",
     badgeUrl:
-      "https://resources.premierleague.com/premierleague/badges/21/t86.png",
+      "https://resources.premierleague.com/premierleague/badges/21/t21.png",
   },
   {
     name: "Leeds United",
-    shortName: "LEE",
+    shortName: "Leeds",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t2.png",
   },
   {
     name: "Arsenal",
-    shortName: "ARS",
+    shortName: "Arsenal",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t3.png",
   },
   {
     name: "Brighton & Hove Albion",
-    shortName: "BHA",
+    shortName: "Brighton",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t36.png",
   },
   {
     name: "Crystal Palace",
-    shortName: "CRY",
+    shortName: "Crystal Palace",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t31.png",
   },
   {
     name: "Brentford",
-    shortName: "BRE",
+    shortName: "Brentford",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t94.png",
   },
   {
     name: "Tottenham Hotspur",
-    shortName: "TOT",
+    shortName: "Tottenham",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t6.png",
   },
   {
     name: "Liverpool",
-    shortName: "LIV",
+    shortName: "Liverpool",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t14.png",
   },
   {
     name: "Newcastle United",
-    shortName: "NEW",
+    shortName: "Newcastle",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t4.png",
   },
   {
     name: "AFC Bournemouth",
-    shortName: "BOU",
+    shortName: "Bournemouth",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t91.png",
   },
   {
     name: "Manchester City",
-    shortName: "MCI",
+    shortName: "Man City",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t43.png",
   },
   {
     name: "Chelsea",
-    shortName: "CHE",
+    shortName: "Chelsea",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t8.png",
   },
   {
     name: "Nottingham Forest",
-    shortName: "NFO",
+    shortName: "Nott'm Forest",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t17.png",
   },
   {
     name: "Fulham",
-    shortName: "FUL",
+    shortName: "Fulham",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t54.png",
   },
   {
     name: "Aston Villa",
-    shortName: "AVL",
+    shortName: "Aston Villa",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t7.png",
   },
   {
     name: "Manchester United",
-    shortName: "MUN",
+    shortName: "Man United",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t1.png",
   },
   {
     name: "Everton",
-    shortName: "EVE",
+    shortName: "Everton",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t11.png",
   },
     {
     name: "Wolverhampton Wanderers",
-    shortName: "WOL",
+    shortName: "Wolves",
     badgeUrl: "https://resources.premierleague.com/premierleague/badges/21/t39.png",
   },
   {
     name: "Leicester City",
-    shortName: "LEI",
+    shortName: "Leicester",
     badgeUrl: "https://resources.premierleague.com/premierleague/badges/21/t13.png",
   },
   {
     name: "Southampton",
-    shortName: "SOU",
+    shortName: "Southampton",
     badgeUrl: "https://resources.premierleague.com/premierleague/badges/21/t20.png",
   },
   {
     name: "Burnley",
-    shortName: "BUR",
+    shortName: "Burnley",
     badgeUrl: "https://resources.premierleague.com/premierleague/badges/21/t90.png",
   },
   {
     name: "Sunderland",
-    shortName: "SUN",
+    shortName: "Sunderland",
     badgeUrl: "https://resources.premierleague.com/premierleague/badges/21/t56.png"
   }
 ];
