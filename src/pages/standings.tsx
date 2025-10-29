@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import {
@@ -13,6 +12,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Card } from "@/components/ui/card";
 import { standingsData } from "@/data/standings";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Navigation } from "@/components/Navigation";
 
 interface TeamStanding {
   position: number;
@@ -60,6 +60,7 @@ const StandingsSkeleton = () => (
 const StandingsPage = () => {
   const [standings, setStandings] = useState<TeamStanding[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState("standings");
 
   useEffect(() => {
     setLoading(true);
@@ -149,6 +150,7 @@ const StandingsPage = () => {
           </Card>
         )}
       </main>
+      <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
     </div>
   );
 };
