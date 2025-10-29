@@ -35,7 +35,7 @@ const CalendarMatchItem = ({ match, isLast }: { match: CalendarMatch, isLast: bo
   <div className={cn("flex items-center justify-between p-4", !isLast && "border-b border-border")}>
     <div className="flex items-center gap-4 flex-1 justify-end">
       <span className="font-semibold text-sm text-right">{match.homeTeam.responsiveName}</span>
-      <Image src={match.homeLogo} alt={match.homeTeam.name} width={28} height={28} />
+      <Image src={match.homeLogo} alt={match.homeTeam.shortName} width={28} height={28} />
     </div>
     <div className="text-center mx-4">
       {match.status === 'finished' ? (
@@ -51,7 +51,7 @@ const CalendarMatchItem = ({ match, isLast }: { match: CalendarMatch, isLast: bo
       )}
     </div>
     <div className="flex items-center gap-4 flex-1">
-      <Image src={match.awayLogo} alt={match.awayTeam.name} width={28} height={28} />
+      <Image src={match.awayLogo} alt={match.awayTeam.shortName} width={28} height={28} />
       <span className="font-semibold text-sm">{match.awayTeam.responsiveName}</span>
     </div>
   </div>

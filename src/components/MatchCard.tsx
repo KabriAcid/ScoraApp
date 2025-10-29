@@ -56,7 +56,7 @@ export const MatchCard = ({
                 {homeBadge ? (
                   <Image
                     src={homeBadge}
-                    alt={`${homeTeam.name} logo`}
+                    alt={`${homeTeam.shortName} logo`}
                     width={56}
                     height={56}
                     className="object-contain"
@@ -102,7 +102,7 @@ export const MatchCard = ({
                 {awayBadge ? (
                   <Image
                     src={awayBadge}
-                    alt={`${awayTeam.name} logo`}
+                    alt={`${awayTeam.shortName} logo`}
                     width={56}
                     height={56}
                     className="object-contain"

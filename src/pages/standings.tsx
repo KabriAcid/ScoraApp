@@ -118,7 +118,7 @@ const StandingsPage = () => {
                       <div className="flex items-center gap-2">
                         <Image
                           src={entry.team.badgeUrl}
-                          alt={entry.team.name}
+                          alt={`${entry.team.shortName} logo`}
                           width={24}
                           height={24}
                           className="object-contain"

@@ -37,7 +37,7 @@ export const MatchListItem = ({
           {homeBadge ? (
             <Image
               src={homeBadge}
-              alt={`${homeTeam.name} logo`}
+              alt={`${homeTeam.shortName} logo`}
               width={32}
               height={32}
               className="object-contain"
@@ -80,7 +80,7 @@ export const MatchListItem = ({
           {awayBadge ? (
             <Image
               src={awayBadge}
-              alt={`${awayTeam.name} logo`}
+              alt={`${awayTeam.shortName} logo`}
               width={32}
               height={32}
               className="object-contain"
