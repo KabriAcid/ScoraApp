@@ -101,7 +101,7 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
         <div className="flex items-center justify-center gap-8 mb-4">
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center mb-2 font-bold text-2xl text-foreground overflow-hidden">
-              <Image src="https://picsum.photos/seed/1/56/56" alt="Chelsea logo" width={56} height={56} className="object-contain"/>
+              <Image src="https://ssl.gstatic.com/onebox/media/sports/logos/0i2_A1PMGHflrIe3umGD2A_96x96.png" alt="Chelsea logo" width={56} height={56} className="object-contain"/>
             </div>
             <span className="text-sm font-medium">Chelsea</span>
           </div>
@@ -114,7 +114,7 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
 
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center mb-2 font-bold text-2xl text-foreground overflow-hidden">
-              <Image src="https://picsum.photos/seed/2/56/56" alt="Man Utd logo" width={56} height={56} className="object-contain"/>
+              <Image src="https://ssl.gstatic.com/onebox/media/sports/logos/udQ6ns69i-jBs_RxASrasQ_96x96.png" alt="Man Utd logo" width={56} height={56} className="object-contain"/>
             </div>
             <span className="text-sm font-medium">Man Utd</span>
           </div>

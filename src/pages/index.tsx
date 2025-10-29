@@ -22,8 +22,8 @@ const Index = () => {
     awayScore: 1,
     status: "live" as const,
     league: "Premier League",
-    homeLogo: "https://picsum.photos/seed/1/56/56",
-    awayLogo: "https://picsum.photos/seed/2/56/56",
+    homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/0i2_A1PMGHflrIe3umGD2A_96x96.png", // Chelsea
+    awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/udQ6ns69i-jBs_RxASrasQ_96x96.png", // Man Utd
     matchTime: 62,
     stadium: "Stamford Bridge",
     matchWeek: "Week 10",
@@ -37,8 +37,8 @@ const Index = () => {
       homeScore: 0,
       awayScore: 3,
       status: "live" as const,
-      homeLogo: "https://picsum.photos/seed/3/32/32",
-      awayLogo: "https://picsum.photos/seed/4/32/32",
+      homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/nS_WGF9ydyPZPUjJpkP21A_96x96.png", // Nottingham Forest
+      awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/0iHbx-InIB_Rbb3v0pS2JQ_96x96.png", // Liverpool
     },
     {
       id: "3",
@@ -47,8 +47,8 @@ const Index = () => {
       homeScore: 2,
       awayScore: 1,
       status: "live" as const,
-      homeLogo: "https://picsum.photos/seed/5/32/32",
-      awayLogo: "https://picsum.photos/seed/6/32/32",
+      homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/z44l-a0W1v5FmgP1MfYGGA_96x96.png", // Man City
+      awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/EKIe0e-ZIphOcfQAwsuEEQ_96x96.png", // Brighton
     },
     {
       id: "4",
@@ -57,8 +57,8 @@ const Index = () => {
       homeScore: 1,
       awayScore: 0,
       status: "live" as const,
-      homeLogo: "https://picsum.photos/seed/7/32/32",
-      awayLogo: "https://picsum.photos/seed/8/32/32",
+      homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/ZW73-Q34I4FNsD25m5fO_w_96x96.png", // Wolves
+      awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/Pa3d1c13B1brruUNvVsyZQ_96x96.png", // Leicester
     },
   ];
 
