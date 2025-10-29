@@ -1,6 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
-
-const matchesData = [
+export const matchesData = [
   {
     id: "1",
     homeTeam: "Chelsea",
@@ -19,17 +17,17 @@ const matchesData = [
       manager: "Graham Potter",
       formation: "4-3-3",
       lineup: [
-        { name: "Kepa Arrizabalaga", number: 1 },
-        { name: "Reece James", number: 24 },
-        { name: "Thiago Silva", number: 6 },
-        { name: "Kalidou Koulibaly", number: 26 },
-        { name: "Ben Chilwell", number: 21 },
-        { name: "Enzo Fernandez", number: 5 },
-        { name: "Mateo Kovacic", number: 8 },
-        { name: "Mason Mount", number: 19 },
-        { name: "Kai Havertz", number: 29 },
-        { name: "Raheem Sterling", number: 17 },
-        { name: "Pierre-Emerick Aubameyang", number: 9 },
+        { name: "Kepa Arrizabalaga", number: 1, position: { x: 50, y: 95 } },
+        { name: "Reece James", number: 24, position: { x: 85, y: 75 } },
+        { name: "Thiago Silva", number: 6, position: { x: 65, y: 85 } },
+        { name: "Kalidou Koulibaly", number: 26, position: { x: 35, y: 85 } },
+        { name: "Ben Chilwell", number: 21, position: { x: 15, y: 75 } },
+        { name: "Enzo Fernandez", number: 5, position: { x: 50, y: 60 } },
+        { name: "Mateo Kovacic", number: 8, position: { x: 30, y: 50 } },
+        { name: "Mason Mount", number: 19, position: { x: 70, y: 50 } },
+        { name: "Kai Havertz", number: 29, position: { x: 50, y: 25 } },
+        { name: "Raheem Sterling", number: 17, position: { x: 20, y: 35 } },
+        { name: "Pierre-Emerick Aubameyang", number: 9, position: { x: 80, y: 35 } },
       ],
       substitutes: [
         { name: "Edouard Mendy", number: 16 },
@@ -45,17 +43,17 @@ const matchesData = [
       manager: "E. ten Hag",
       formation: "4-2-3-1",
       lineup: [
-        { name: "David de Gea", number: 1 },
-        { name: "Diogo Dalot", number: 20 },
-        { name: "Raphael Varane", number: 19 },
-        { name: "Lisandro Martinez", number: 6 },
-        { name: "Luke Shaw", number: 23 },
-        { name: "Casemiro", number: 18 },
-        { name: "Christian Eriksen", number: 14 },
-        { name: "Antony", number: 21 },
-        { name: "Bruno Fernandes", number: 8 },
-        { name: "Jadon Sancho", number: 25 },
-        { name: "Marcus Rashford", number: 10 },
+        { name: "David de Gea", number: 1, position: { x: 50, y: 5 } },
+        { name: "Diogo Dalot", number: 20, position: { x: 15, y: 25 } },
+        { name: "Raphael Varane", number: 19, position: { x: 35, y: 15 } },
+        { name: "Lisandro Martinez", number: 6, position: { x: 65, y: 15 } },
+        { name: "Luke Shaw", number: 23, position: { x: 85, y: 25 } },
+        { name: "Casemiro", number: 18, position: { x: 30, y: 40 } },
+        { name: "Christian Eriksen", number: 14, position: { x: 70, y: 40 } },
+        { name: "Antony", number: 21, position: { x: 20, y: 65 } },
+        { name: "Bruno Fernandes", number: 8, position: { x: 50, y: 55 } },
+        { name: "Jadon Sancho", number: 25, position: { x: 80, y: 65 } },
+        { name: "Marcus Rashford", number: 10, position: { x: 50, y: 80 } },
       ],
       substitutes: [
         { name: "Tom Heaton", number: 22 },
@@ -99,7 +97,3 @@ const matchesData = [
     awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/Pa3d1c13B1brruUNvVsyZQ_96x96.png",
   },
 ];
-
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  res.status(200).json(matchesData);
-}

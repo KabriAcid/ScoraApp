@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
+import { TeamLineup } from "@/components/TeamLineup";
 
 interface MatchDetailProps {
   match: any;
@@ -91,6 +92,15 @@ export const MatchDetail = ({ match, onBack }: MatchDetailProps) => {
           </TabsList>
 
           <TabsContent value="lineups" className="space-y-6">
+             {/* Lineup Visualization */}
+             <div>
+              <h3 className="font-semibold mb-4">Formation</h3>
+              <div className="grid grid-cols-2 gap-2">
+                <TeamLineup players={homeTeamData.lineup} color="blue" />
+                <TeamLineup players={awayTeamData.lineup} color="red" />
+              </div>
+            </div>
+
             {/* Managers */}
             <div>
               <Card className="p-4">

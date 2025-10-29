@@ -7,43 +7,23 @@ import { Navigation } from "@/components/Navigation";
 import { MatchDetail } from "./match-detail";
 import StandingsPage from "./standings";
 import { Skeleton } from "@/components/ui/skeleton";
+import { fixturesCalendar } from "@/data/fixturesCalendar";
+import { matchesData } from "@/data/matches";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("home");
   const [selectedDate, setSelectedDate] = useState(17);
   const [selectedMatch, setSelectedMatch] = useState<string | null>(null);
-  const [fixturesCalendar, setFixturesCalendar] = useState<
-    { date: number; day: string; month?: string }[]
-  >([]);
   const [matches, setMatches] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchFixtures = async () => {
-      try {
-        const response = await fetch("/api/fixtures");
-        const data = await response.json();
-        setFixturesCalendar(data);
-      } catch (error) {
-        console.error("Failed to fetch fixtures:", error);
-      }
-    };
-
-    const fetchMatches = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch("/api/matches");
-        const data = await response.json();
-        setMatches(data);
-      } catch (error) {
-        console.error("Failed to fetch matches:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFixtures();
-    fetchMatches();
+    setLoading(true);
+    // Simulate fetching data
+    setTimeout(() => {
+      setMatches(matchesData);
+      setLoading(false);
+    }, 1000);
   }, []);
 
   const featuredMatch = matches.find((m) => m.featured);

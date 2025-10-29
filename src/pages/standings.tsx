@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/select";
 import { RefreshCw } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { standingsData } from "@/data/standings";
 
 interface TeamStanding {
   position: number;
@@ -69,20 +70,12 @@ const StandingsPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchStandings = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch("/api/standings");
-        const data = await response.json();
-        setStandings(data);
-      } catch (error) {
-        console.error("Failed to fetch standings:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchStandings();
+    setLoading(true);
+    // Simulate fetching data
+    setTimeout(() => {
+      setStandings(standingsData);
+      setLoading(false);
+    }, 1000);
   }, []);
 
   return (
