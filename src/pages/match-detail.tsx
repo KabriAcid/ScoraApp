@@ -1,3 +1,6 @@
+
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { ArrowLeft, MoreVertical, Target, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -5,22 +8,36 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import { TeamLineup } from "@/components/TeamLineup";
+import { matchesData } from "@/data/matches";
+import Loading from "@/components/Loading";
 
-interface MatchDetailProps {
-  match: any;
-  onBack: () => void;
-}
+const MatchDetailPage = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const [match, setMatch] = useState<any>(null);
 
-export const MatchDetail = ({ match, onBack }: MatchDetailProps) => {
+  useEffect(() => {
+    if (id) {
+      const foundMatch = matchesData.find((m) => m.id === id);
+      setMatch(foundMatch);
+    }
+  }, [id]);
+
   if (!match) {
-    // Ideally show a loading or not found state
-    return (
-      <div className="flex items-center justify-center h-screen">
-        Match not found.
-      </div>
-    );
+    return <Loading />;
   }
-  const { homeTeam, awayTeam, stadium, homeLogo, awayLogo, homeScore, awayScore, homeTeamData, awayTeamData } = match;
+
+  const {
+    homeTeam,
+    awayTeam,
+    stadium,
+    homeLogo,
+    awayLogo,
+    homeScore,
+    awayScore,
+    homeTeamData,
+    awayTeamData,
+  } = match;
 
   return (
     <div
@@ -35,7 +52,7 @@ export const MatchDetail = ({ match, onBack }: MatchDetailProps) => {
           <Button
             variant="ghost"
             size="icon"
-            onClick={onBack}
+            onClick={() => router.back()}
             className="text-primary-foreground hover:bg-primary-foreground/10"
           >
             <ArrowLeft className="w-5 h-5" />
@@ -373,3 +390,5 @@ export const MatchDetail = ({ match, onBack }: MatchDetailProps) => {
     </div>
   );
 };
+
+export default MatchDetailPage;

@@ -1,10 +1,10 @@
+
 import { useState, useEffect } from "react";
 import { Bell, Search, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MatchCard } from "@/components/MatchCard";
 import { MatchListItem } from "@/components/MatchListItem";
 import { Navigation } from "@/components/Navigation";
-import { MatchDetail } from "./match-detail";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fixturesCalendar } from "@/data/fixturesCalendar";
 import { matchesData } from "@/data/matches";
@@ -12,34 +12,31 @@ import { useRouter } from "next/router";
 
 const Index = () => {
   const [selectedDate, setSelectedDate] = useState(17);
-  const [selectedMatch, setSelectedMatch] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-    // Simulate loading for better UX
     const timer = setTimeout(() => {
       setLoading(false);
     }, 500);
     return () => clearTimeout(timer);
   }, []);
 
+  const handleMatchClick = (matchId: string) => {
+    router.push(`/match-detail?id=${matchId}`);
+  };
+
   const featuredMatch = matchesData.find((m) => m.featured);
   const liveMatches = matchesData.filter((m) => !m.featured);
 
-  if (selectedMatch) {
-    const match = matchesData.find((m) => m.id === selectedMatch);
-    return <MatchDetail match={match} onBack={() => setSelectedMatch(null)} />;
-  }
-  
   const getActiveTab = () => {
-    if (router.pathname === "/") return "home";
-    if (router.pathname === "/standings") return "standings";
-    if (router.pathname === "/calendar") return "calendar";
-    if (router.pathname === "/profile") return "profile";
+    const path = router.pathname;
+    if (path === "/") return "home";
+    if (path === "/standings") return "standings";
+    if (path === "/calendar") return "calendar";
+    if (path === "/profile") return "profile";
     return "home";
   };
-
 
   return (
     <div className="min-h-screen bg-background pb-20">
@@ -113,7 +110,7 @@ const Index = () => {
                 </div>
                 <MatchCard
                   {...featuredMatch}
-                  onClick={() => setSelectedMatch(featuredMatch.id)}
+                  onClick={() => handleMatchClick(featuredMatch.id)}
                 />
               </section>
             )}
@@ -124,7 +121,7 @@ const Index = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-accent hover:text-white"
+                  className="text-accent hover:text-accent"
                 >
                   View All →
                 </Button>
@@ -134,7 +131,7 @@ const Index = () => {
                   <MatchListItem
                     key={match.id}
                     {...match}
-                    onClick={() => setSelectedMatch(match.id)}
+                    onClick={() => handleMatchClick(match.id)}
                   />
                 ))}
               </div>
