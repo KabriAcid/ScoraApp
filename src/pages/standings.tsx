@@ -103,10 +103,10 @@ const StandingsPage = () => {
                   <TableHead className="text-right p-2">W</TableHead>
                   <TableHead className="text-right p-2">D</TableHead>
                   <TableHead className="text-right p-2">L</TableHead>
-                  <TableHead className="text-right p-2 hidden sm:table-cell">GF</TableHead>
-                  <TableHead className="text-right p-2 hidden sm:table-cell">GA</TableHead>
+                  <TableHead className="text-right p-2">GF</TableHead>
+                  <TableHead className="text-right p-2">GA</TableHead>
                   <TableHead className="text-right p-2">GD</TableHead>
-                  <TableHead className="text-right p-2">Pts</TableHead>
+                  <TableHead className="text-right font-bold p-2">Pts</TableHead>
                   <TableHead className="p-2 text-center hidden md:table-cell">Form</TableHead>
                 </TableRow>
               </TableHeader>
@@ -131,8 +131,8 @@ const StandingsPage = () => {
                     <TableCell className="text-right p-2">{entry.win}</TableCell>
                     <TableCell className="text-right p-2">{entry.draw}</TableCell>
                     <TableCell className="text-right p-2">{entry.loss}</TableCell>
-                    <TableCell className="text-right p-2 hidden sm:table-cell">{entry.gf}</TableCell>
-                    <TableCell className="text-right p-2 hidden sm:table-cell">{entry.ga}</TableCell>
+                    <TableCell className="text-right p-2">{entry.gf}</TableCell>
+                    <TableCell className="text-right p-2">{entry.ga}</TableCell>
                     <TableCell className="text-right p-2">{entry.gd}</TableCell>
                     <TableCell className="text-right font-bold p-2">{entry.points}</TableCell>
                     <TableCell className="hidden md:table-cell p-2">
