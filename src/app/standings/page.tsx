@@ -1,5 +1,4 @@
-
-'use client';
+"use client";
 import { useEffect, useState } from "react";
 import {
   Table,
@@ -12,7 +11,13 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card } from "@/components/ui/card";
 import { standingsData } from "@/data/standings";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Navigation } from "@/components/Navigation";
 import { PremierLeagueClub } from "@/data/clubs";
 
@@ -31,7 +36,8 @@ interface TeamStanding {
 }
 
 const FormBadge = ({ result }: { result: "W" | "D" | "L" }) => {
-  const baseClasses = "w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white";
+  const baseClasses =
+    "w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white";
   const variants = {
     W: "bg-green-500",
     D: "bg-gray-400",
@@ -64,7 +70,18 @@ const StandingsPage = () => {
     setLoading(true);
     // Simulate fetching data
     setTimeout(() => {
-      setStandings(standingsData);
+      // Fix: cast form values to ("W" | "D" | "L")[]
+      const fixedStandings = standingsData.map((entry) => ({
+        ...entry,
+        form: entry.form.map((result) => {
+          if (result === "W" || result === "D" || result === "L") {
+            return result;
+          }
+          // Default to "D" if invalid value
+          return "D";
+        }) as ("W" | "D" | "L")[],
+      }));
+      setStandings(fixedStandings);
       setLoading(false);
     }, 1000);
   }, []);
@@ -105,14 +122,18 @@ const StandingsPage = () => {
                   <TableHead className="text-right p-2">GF</TableHead>
                   <TableHead className="text-right p-2">GA</TableHead>
                   <TableHead className="text-right p-2">GD</TableHead>
-                  <TableHead className="text-right font-bold p-2">Pts</TableHead>
+                  <TableHead className="text-right font-bold p-2">
+                    Pts
+                  </TableHead>
                   <TableHead className="p-2 text-center">Form</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {standings.map((entry) => (
                   <TableRow key={entry.position}>
-                    <TableCell className="font-medium p-2">{entry.position}</TableCell>
+                    <TableCell className="font-medium p-2">
+                      {entry.position}
+                    </TableCell>
                     <TableCell className="p-2">
                       <div className="flex items-center gap-2">
                         <img
@@ -125,14 +146,24 @@ const StandingsPage = () => {
                         <span>{entry.team.responsiveName}</span>
                       </div>
                     </TableCell>
-                    <TableCell className="text-right p-2">{entry.played}</TableCell>
-                    <TableCell className="text-right p-2">{entry.win}</TableCell>
-                    <TableCell className="text-right p-2">{entry.draw}</TableCell>
-                    <TableCell className="text-right p-2">{entry.loss}</TableCell>
+                    <TableCell className="text-right p-2">
+                      {entry.played}
+                    </TableCell>
+                    <TableCell className="text-right p-2">
+                      {entry.win}
+                    </TableCell>
+                    <TableCell className="text-right p-2">
+                      {entry.draw}
+                    </TableCell>
+                    <TableCell className="text-right p-2">
+                      {entry.loss}
+                    </TableCell>
                     <TableCell className="text-right p-2">{entry.gf}</TableCell>
                     <TableCell className="text-right p-2">{entry.ga}</TableCell>
                     <TableCell className="text-right p-2">{entry.gd}</TableCell>
-                    <TableCell className="text-right font-bold p-2">{entry.points}</TableCell>
+                    <TableCell className="text-right font-bold p-2">
+                      {entry.points}
+                    </TableCell>
                     <TableCell className="p-2">
                       <div className="flex gap-1 justify-center">
                         {entry.form.map((result, index) => (

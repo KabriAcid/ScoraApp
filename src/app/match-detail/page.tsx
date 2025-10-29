@@ -1,6 +1,6 @@
 
 'use client';
-import { useRouter, useSearchParams } from "next/router";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ArrowLeft, MoreVertical, Target, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
