@@ -48,59 +48,59 @@ export const MatchCard = ({
           </div>
 
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3 flex-1">
-              <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center font-bold text-lg overflow-hidden">
+            <div className="flex flex-col items-center gap-2 flex-1">
+              <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center font-bold text-lg overflow-hidden">
                 {homeLogo ? (
                   <Image
                     src={homeLogo}
                     alt={`${homeTeam} logo`}
-                    width={48}
-                    height={48}
+                    width={56}
+                    height={56}
                     className="object-contain"
                   />
                 ) : (
                   homeTeam.substring(0, 3).toUpperCase()
                 )}
               </div>
-              <div className="flex flex-col">
+              <div className="text-center">
                 <span className="text-primary-foreground font-semibold">
                   {homeTeam}
                 </span>
-                <span className="text-xs text-primary-foreground/60">Home</span>
+                <p className="text-xs text-muted-foreground">Home</p>
               </div>
             </div>
 
             <div className="flex items-center gap-4 mx-4">
-              <span className="text-3xl font-bold text-primary-foreground">
+              <span className="text-4xl font-bold text-primary-foreground">
                 {homeScore}
               </span>
-              <span className="text-2xl font-bold text-primary-foreground/50">
+              <span className="text-3xl font-bold text-primary-foreground/50">
                 :
               </span>
-              <span className="text-3xl font-bold text-primary-foreground">
+              <span className="text-4xl font-bold text-primary-foreground">
                 {awayScore}
               </span>
             </div>
 
-            <div className="flex items-center gap-3 flex-1 justify-end">
-              <div className="flex flex-col items-end">
-                <span className="text-primary-foreground font-semibold">
-                  {awayTeam}
-                </span>
-                <span className="text-xs text-primary-foreground/60">Away</span>
-              </div>
-              <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center font-bold text-lg overflow-hidden">
+            <div className="flex flex-col items-center gap-2 flex-1">
+              <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center font-bold text-lg overflow-hidden">
                 {awayLogo ? (
                   <Image
                     src={awayLogo}
                     alt={`${awayTeam} logo`}
-                    width={48}
-                    height={48}
+                    width={56}
+                    height={56}
                     className="object-contain"
                   />
                 ) : (
                   awayTeam.substring(0, 3).toUpperCase()
                 )}
+              </div>
+              <div className="text-center">
+                <span className="text-primary-foreground font-semibold">
+                  {awayTeam}
+                </span>
+                <p className="text-xs text-muted-foreground">Away</p>
               </div>
             </div>
           </div>
