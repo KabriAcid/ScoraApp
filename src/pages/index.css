@@ -130,3 +130,16 @@ All colors MUST be HSL.
     font-family: Ginto, sans-serif;
   }
 }
+
+/* Hide Vercel floating button */
+.nextjs-toast,
+[data-nextjs-toast="true"],
+[data-next-badge-root],
+[data-nextjs-dev-tools-button] {
+  display: none !important;
+}
+
+/* Optionally hide the badge root if needed */
+[data-next-badge-root] {
+  display: none !important;
+}
