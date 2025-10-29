@@ -8,29 +8,38 @@ import { MatchDetail } from "./match-detail";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fixturesCalendar } from "@/data/fixturesCalendar";
 import { matchesData } from "@/data/matches";
+import { useRouter } from "next/router";
 
 const Index = () => {
   const [selectedDate, setSelectedDate] = useState(17);
   const [selectedMatch, setSelectedMatch] = useState<string | null>(null);
-  const [matches, setMatches] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
-    setLoading(true);
-    // Simulate fetching data
-    setTimeout(() => {
-      setMatches(matchesData);
+    // Simulate loading for better UX
+    const timer = setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 500);
+    return () => clearTimeout(timer);
   }, []);
 
-  const featuredMatch = matches.find((m) => m.featured);
-  const liveMatches = matches.filter((m) => !m.featured);
+  const featuredMatch = matchesData.find((m) => m.featured);
+  const liveMatches = matchesData.filter((m) => !m.featured);
 
   if (selectedMatch) {
-    const match = matches.find((m) => m.id === selectedMatch);
+    const match = matchesData.find((m) => m.id === selectedMatch);
     return <MatchDetail match={match} onBack={() => setSelectedMatch(null)} />;
   }
+  
+  const getActiveTab = () => {
+    if (router.pathname === "/") return "home";
+    if (router.pathname === "/standings") return "standings";
+    if (router.pathname === "/calendar") return "calendar";
+    if (router.pathname === "/profile") return "profile";
+    return "home";
+  };
+
 
   return (
     <div className="min-h-screen bg-background pb-20">
@@ -135,7 +144,7 @@ const Index = () => {
       </main>
 
       {/* Navigation */}
-      <Navigation activeTab={"home"} />
+      <Navigation activeTab={getActiveTab()} />
     </div>
   );
 };
