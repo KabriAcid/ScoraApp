@@ -1,17 +1,17 @@
+import Link from "next/link";
 import { Home, TrendingUp, Calendar, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface NavigationProps {
   activeTab: string;
-  onTabChange: (tab: string) => void;
 }
 
-export const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
+export const Navigation = ({ activeTab }: NavigationProps) => {
   const tabs = [
-    { id: "home", icon: Home, label: "Home" },
-    { id: "standings", icon: TrendingUp, label: "Standings" },
-    { id: "calendar", icon: Calendar, label: "Calendar" },
-    { id: "profile", icon: User, label: "Profile" },
+    { id: "home", href: "/", icon: Home, label: "Home" },
+    { id: "standings", href: "/standings", icon: TrendingUp, label: "Standings" },
+    { id: "calendar", href: "/calendar", icon: Calendar, label: "Calendar" },
+    { id: "profile", href: "/profile", icon: User, label: "Profile" },
   ];
 
   return (
@@ -22,9 +22,9 @@ export const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
           const isActive = activeTab === tab.id;
 
           return (
-            <button
+            <Link
+              href={tab.href}
               key={tab.id}
-              onClick={() => onTabChange(tab.id)}
               className={cn(
                 "flex flex-col items-center justify-center gap-1 flex-1 h-full transition-colors",
                 isActive
@@ -34,7 +34,7 @@ export const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
             >
               <Icon className="w-5 h-5" />
               <span className="text-xs font-medium">{tab.label}</span>
-            </button>
+            </Link>
           );
         })}
       </div>

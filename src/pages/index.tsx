@@ -5,13 +5,11 @@ import { MatchCard } from "@/components/MatchCard";
 import { MatchListItem } from "@/components/MatchListItem";
 import { Navigation } from "@/components/Navigation";
 import { MatchDetail } from "./match-detail";
-import StandingsPage from "./standings";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fixturesCalendar } from "@/data/fixturesCalendar";
 import { matchesData } from "@/data/matches";
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState("home");
   const [selectedDate, setSelectedDate] = useState(17);
   const [selectedMatch, setSelectedMatch] = useState<string | null>(null);
   const [matches, setMatches] = useState<any[]>([]);
@@ -32,15 +30,6 @@ const Index = () => {
   if (selectedMatch) {
     const match = matches.find((m) => m.id === selectedMatch);
     return <MatchDetail match={match} onBack={() => setSelectedMatch(null)} />;
-  }
-
-  if (activeTab === "standings") {
-    return (
-      <>
-        <StandingsPage />
-        <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
-      </>
-    );
   }
 
   return (
@@ -146,7 +135,7 @@ const Index = () => {
       </main>
 
       {/* Navigation */}
-      <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
+      <Navigation activeTab={"home"} />
     </div>
   );
 };

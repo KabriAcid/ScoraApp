@@ -60,7 +60,6 @@ const StandingsSkeleton = () => (
 const StandingsPage = () => {
   const [standings, setStandings] = useState<TeamStanding[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("standings");
 
   useEffect(() => {
     setLoading(true);
@@ -108,7 +107,7 @@ const StandingsPage = () => {
                   <TableHead className="text-right p-2">GA</TableHead>
                   <TableHead className="text-right p-2">GD</TableHead>
                   <TableHead className="text-right font-bold p-2">Pts</TableHead>
-                  <TableHead className="p-2 text-center hidden md:table-cell">Form</TableHead>
+                  <TableHead className="p-2 text-center">Form</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -136,7 +135,7 @@ const StandingsPage = () => {
                     <TableCell className="text-right p-2">{entry.ga}</TableCell>
                     <TableCell className="text-right p-2">{entry.gd}</TableCell>
                     <TableCell className="text-right font-bold p-2">{entry.points}</TableCell>
-                    <TableCell className="hidden md:table-cell p-2">
+                    <TableCell className="p-2">
                       <div className="flex gap-1 justify-center">
                         {entry.form.map((result, index) => (
                           <FormBadge key={index} result={result} />
@@ -150,7 +149,7 @@ const StandingsPage = () => {
           </Card>
         )}
       </main>
-      <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
+      <Navigation activeTab={"standings"} />
     </div>
   );
 };
