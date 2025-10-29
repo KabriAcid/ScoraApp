@@ -7,6 +7,7 @@ import { calendarMatchesData, pastCalendarMatchesData } from "@/data/calendarMat
 import Image from "next/image";
 import Loading from "@/components/Loading";
 import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 interface Match {
   id: string;
@@ -25,8 +26,8 @@ interface MatchGroup {
   matches: Match[];
 }
 
-const CalendarMatchItem = ({ match }: { match: Match }) => (
-  <div className="flex items-center justify-between p-2">
+const CalendarMatchItem = ({ match, isLast }: { match: Match, isLast: boolean }) => (
+  <div className={cn("flex items-center justify-between p-4", !isLast && "border-b border-border")}>
     <div className="flex items-center gap-4 flex-1 justify-end">
       <span className="font-semibold text-sm text-right">{match.homeTeam}</span>
       <Image src={match.homeLogo} alt={match.homeTeam} width={28} height={28} />
@@ -111,12 +112,12 @@ const CalendarPage = () => {
       </header>
 
       <main className="p-4 space-y-4">
-        {matchGroups.map((group, index) => (
-          <Card key={index}>
+        {matchGroups.map((group, groupIndex) => (
+          <Card key={groupIndex}>
             <h2 className="font-bold text-sm mb-2 px-4 pt-4">{group.date}</h2>
-            <div className="space-y-2">
-              {group.matches.map((match) => (
-                  <CalendarMatchItem key={match.id} match={match} />
+            <div className="space-y-0">
+              {group.matches.map((match, matchIndex) => (
+                  <CalendarMatchItem key={match.id} match={match} isLast={matchIndex === group.matches.length - 1} />
               ))}
             </div>
           </Card>
