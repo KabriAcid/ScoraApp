@@ -6,6 +6,7 @@ import { Navigation } from "@/components/Navigation";
 import { calendarMatchesData, pastCalendarMatchesData } from "@/data/calendarMatches";
 import Image from "next/image";
 import Loading from "@/components/Loading";
+import { Card } from "@/components/ui/card";
 
 interface Match {
   id: string;
@@ -111,14 +112,14 @@ const CalendarPage = () => {
 
       <main className="p-4 space-y-4">
         {matchGroups.map((group, index) => (
-          <div key={index}>
-            <h2 className="font-bold text-sm mb-2 px-2">{group.date}</h2>
+          <Card key={index}>
+            <h2 className="font-bold text-sm mb-2 px-4 pt-4">{group.date}</h2>
             <div className="space-y-2">
               {group.matches.map((match) => (
                   <CalendarMatchItem key={match.id} match={match} />
               ))}
             </div>
-          </div>
+          </Card>
         ))}
       </main>
 
