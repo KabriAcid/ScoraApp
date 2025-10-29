@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface MatchDetailProps {
   onBack: () => void;
@@ -65,19 +65,13 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
   };
 
   return (
-    <motion.div 
+    <div
       className="min-h-screen bg-background pb-20"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
     >
       {/* Header */}
-      <motion.div 
+      <div
         className="p-6 text-primary-foreground"
         style={{ background: "var(--gradient-primary)" }}
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4 }}
       >
         <div className="flex items-center justify-between mb-6">
           <Button
@@ -106,8 +100,8 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
         {/* Score */}
         <div className="flex items-center justify-center gap-8 mb-4">
           <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center mb-2 font-bold text-2xl text-foreground">
-              CHE
+            <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center mb-2 font-bold text-2xl text-foreground overflow-hidden">
+              <Image src="/chelsea.png" alt="Chelsea logo" width={56} height={56} className="object-contain"/>
             </div>
             <span className="text-sm font-medium">Chelsea</span>
           </div>
@@ -119,20 +113,17 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
           </div>
 
           <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center mb-2 font-bold text-2xl text-foreground">
-              MUN
+            <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center mb-2 font-bold text-2xl text-foreground overflow-hidden">
+              <Image src="/man-utd.png" alt="Man Utd logo" width={56} height={56} className="object-contain"/>
             </div>
             <span className="text-sm font-medium">Man Utd</span>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Content */}
-      <motion.div 
+      <div
         className="p-6"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4, delay: 0.1 }}
       >
         <Tabs defaultValue="lineups" className="w-full">
           <TabsList className="grid w-full grid-cols-4 mb-6">
@@ -144,11 +135,7 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
 
           <TabsContent value="lineups" className="space-y-6">
             {/* Managers */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-            >
+            <div>
               <Card className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -171,50 +158,40 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
                   </div>
                 </div>
               </Card>
-            </motion.div>
+            </div>
 
             {/* Lineups */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
-            >
+            <div>
               <h3 className="font-semibold mb-4">Lineups</h3>
               <Card className="p-4">
                 <div className="grid grid-cols-2 gap-4">
                   {/* Home Team */}
                   <div className="space-y-3">
-                    {homeTeamData.lineup.map((player, index) => (
-                      <motion.div
+                    {homeTeamData.lineup.map((player) => (
+                      <div
                         key={player.number}
                         className="flex items-center gap-2"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.03 }}
                       >
                         <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center shrink-0">
                           <span className="text-xs font-bold text-white">{player.number}</span>
                         </div>
                         <span className="text-sm font-medium truncate">{player.name}</span>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
 
                   {/* Away Team */}
                   <div className="space-y-3">
-                    {awayTeamData.lineup.map((player, index) => (
-                      <motion.div
+                    {awayTeamData.lineup.map((player) => (
+                      <div
                         key={player.number}
                         className="flex items-center gap-2 justify-end"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.03 }}
                       >
                         <span className="text-sm font-medium truncate text-right">{player.name}</span>
                         <div className="w-7 h-7 rounded-full bg-red-600 flex items-center justify-center shrink-0">
                           <span className="text-xs font-bold text-white">{player.number}</span>
                         </div>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -235,63 +212,50 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
                   </div>
                 </div>
               </Card>
-            </motion.div>
+            </div>
 
             {/* Substitutes */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
-            >
+            <div>
               <h3 className="font-semibold mb-4">Substitutes</h3>
               <Card className="p-4">
                 <div className="grid grid-cols-2 gap-4">
                   {/* Home Team Subs */}
                   <div className="space-y-3">
-                    {homeTeamData.substitutes.map((player, index) => (
-                      <motion.div
+                    {homeTeamData.substitutes.map((player) => (
+                      <div
                         key={player.number}
                         className="flex items-center gap-2"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.03 }}
                       >
                         <div className="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
                           <span className="text-xs font-bold text-blue-600">{player.number}</span>
                         </div>
                         <span className="text-sm truncate">{player.name}</span>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
 
                   {/* Away Team Subs */}
                   <div className="space-y-3">
-                    {awayTeamData.substitutes.map((player, index) => (
-                      <motion.div
+                    {awayTeamData.substitutes.map((player) => (
+                      <div
                         key={player.number}
                         className="flex items-center gap-2 justify-end"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.03 }}
                       >
                         <span className="text-sm truncate text-right">{player.name}</span>
                         <div className="w-7 h-7 rounded-full bg-red-100 flex items-center justify-center shrink-0">
                           <span className="text-xs font-bold text-red-600">{player.number}</span>
                         </div>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 </div>
               </Card>
-            </motion.div>
+            </div>
           </TabsContent>
 
           <TabsContent value="stats">
-            <motion.div 
+            <div
               className="space-y-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
             >
               {/* Stat Bar Component */}
               {[
@@ -303,12 +267,9 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
                 { label: "Yellow Cards", home: 2, away: 3 },
                 { label: "Passes", home: 432, away: 318 },
                 { label: "Pass Accuracy", home: 85, away: 78 },
-              ].map((stat, index) => (
-                <motion.div
+              ].map((stat) => (
+                <div
                   key={stat.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
                   <Card className="p-4">
                     <div className="flex justify-between items-center mb-2">
@@ -317,31 +278,24 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
                       <span className="text-sm font-semibold">{stat.away}{stat.label.includes("Accuracy") ? "%" : ""}</span>
                     </div>
                     <div className="flex gap-1 h-2 rounded-full overflow-hidden bg-secondary">
-                      <motion.div
+                      <div
                         className="bg-blue-600"
-                        initial={{ width: 0 }}
-                        animate={{ width: `${(stat.home / (stat.home + stat.away)) * 100}%` }}
-                        transition={{ duration: 0.6, delay: index * 0.05 + 0.2 }}
+                        style={{ width: `${(stat.home / (stat.home + stat.away)) * 100}%` }}
                       />
-                      <motion.div
+                      <div
                         className="bg-red-600"
-                        initial={{ width: 0 }}
-                        animate={{ width: `${(stat.away / (stat.home + stat.away)) * 100}%` }}
-                        transition={{ duration: 0.6, delay: index * 0.05 + 0.2 }}
+                        style={{ width: `${(stat.away / (stat.home + stat.away)) * 100}%` }}
                       />
                     </div>
                   </Card>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </TabsContent>
 
           <TabsContent value="summary">
-            <motion.div 
+            <div
               className="space-y-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
             >
               {/* Match Events */}
               {[
@@ -353,11 +307,8 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
                 { time: "72'", team: "away", type: "yellow", player: "Casemiro", description: "Unsporting behavior" },
                 { time: "81'", team: "away", type: "substitution", player: "Anthony Martial ↔ Jadon Sancho", description: "" },
               ].map((event, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, x: event.team === "home" ? -20 : 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
                   <Card className={`p-4 ${event.team === "home" ? "mr-8" : "ml-8"}`}>
                     <div className="flex items-start gap-3">
@@ -377,24 +328,17 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
                       </div>
                     </div>
                   </Card>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </TabsContent>
 
           <TabsContent value="h2h">
-            <motion.div 
+            <div
               className="space-y-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
             >
               {/* Overall Stats */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-              >
+              <div>
                 <Card className="p-6">
                   <h3 className="font-semibold mb-4 text-center">Last 5 Meetings</h3>
                   <div className="flex justify-around items-center">
@@ -412,7 +356,7 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
                     </div>
                   </div>
                 </Card>
-              </motion.div>
+              </div>
 
               {/* Previous Matches */}
               <div>
@@ -425,11 +369,8 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
                     { date: "Feb 2023", home: "Chelsea", away: "Man Utd", homeScore: 0, awayScore: 2, competition: "Premier League" },
                     { date: "Oct 2022", home: "Man Utd", away: "Chelsea", homeScore: 1, awayScore: 2, competition: "Premier League" },
                   ].map((match, index) => (
-                    <motion.div
+                    <div
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.05 }}
                     >
                       <Card className="p-4">
                         <div className="flex items-center justify-between mb-2">
@@ -454,14 +395,14 @@ export const MatchDetail = ({ onBack }: MatchDetailProps) => {
                           </div>
                         </div>
                       </Card>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           </TabsContent>
         </Tabs>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };

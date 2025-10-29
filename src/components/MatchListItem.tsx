@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface MatchListItemProps {
   homeTeam: string;
@@ -23,18 +23,23 @@ export const MatchListItem = ({
   onClick,
 }: MatchListItemProps) => {
   return (
-    <motion.div
+    <div
       className="flex items-center justify-between p-4 bg-card rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer"
       onClick={onClick}
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.3 }}
-      whileHover={{ x: 4 }}
-      whileTap={{ scale: 0.98 }}
     >
       <div className="flex items-center gap-3 flex-1">
-        <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-xs font-bold">
-          {homeLogo || homeTeam.substring(0, 2).toUpperCase()}
+        <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-xs font-bold overflow-hidden">
+          {homeLogo ? (
+            <Image
+              src={homeLogo}
+              alt={`${homeTeam} logo`}
+              width={32}
+              height={32}
+              className="object-contain"
+            />
+          ) : (
+            homeTeam.substring(0, 2).toUpperCase()
+          )}
         </div>
         <span className="font-medium text-sm">{homeTeam}</span>
       </div>
@@ -66,10 +71,20 @@ export const MatchListItem = ({
 
       <div className="flex items-center gap-3 flex-1 justify-end">
         <span className="font-medium text-sm text-right">{awayTeam}</span>
-        <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-xs font-bold">
-          {awayLogo || awayTeam.substring(0, 2).toUpperCase()}
+        <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-xs font-bold overflow-hidden">
+          {awayLogo ? (
+            <Image
+              src={awayLogo}
+              alt={`${awayTeam} logo`}
+              width={32}
+              height={32}
+              className="object-contain"
+            />
+          ) : (
+            awayTeam.substring(0, 2).toUpperCase()
+          )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };

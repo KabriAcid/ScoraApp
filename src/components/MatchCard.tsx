@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface MatchCardProps {
   homeTeam: string;
@@ -26,12 +26,7 @@ export const MatchCard = ({
   onClick,
 }: MatchCardProps) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      whileTap={{ scale: 0.98 }}
-    >
+    <div>
       <Card
         className="relative overflow-hidden cursor-pointer hover:shadow-xl transition-shadow"
         style={{
@@ -54,8 +49,18 @@ export const MatchCard = ({
 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3 flex-1">
-              <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center font-bold text-lg">
-                {homeLogo || homeTeam.substring(0, 3).toUpperCase()}
+              <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center font-bold text-lg overflow-hidden">
+                {homeLogo ? (
+                  <Image
+                    src={homeLogo}
+                    alt={`${homeTeam} logo`}
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
+                ) : (
+                  homeTeam.substring(0, 3).toUpperCase()
+                )}
               </div>
               <div className="flex flex-col">
                 <span className="text-primary-foreground font-semibold">
@@ -84,13 +89,23 @@ export const MatchCard = ({
                 </span>
                 <span className="text-xs text-primary-foreground/60">Away</span>
               </div>
-              <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center font-bold text-lg">
-                {awayLogo || awayTeam.substring(0, 3).toUpperCase()}
+              <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center font-bold text-lg overflow-hidden">
+                {awayLogo ? (
+                  <Image
+                    src={awayLogo}
+                    alt={`${awayTeam} logo`}
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
+                ) : (
+                  awayTeam.substring(0, 3).toUpperCase()
+                )}
               </div>
             </div>
           </div>
         </div>
       </Card>
-    </motion.div>
+    </div>
   );
 };

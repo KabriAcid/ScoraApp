@@ -23,6 +23,8 @@ const Index = () => {
     awayScore: 1,
     status: "live" as const,
     league: "Premier League",
+    homeLogo: "/chelsea.png",
+    awayLogo: "/man-utd.png",
   };
 
   const liveMatches = [
@@ -33,6 +35,8 @@ const Index = () => {
       homeScore: 0,
       awayScore: 3,
       status: "live" as const,
+      homeLogo: "/n-forest.png",
+      awayLogo: "/liverpool.png",
     },
     {
       id: "3",
@@ -41,6 +45,8 @@ const Index = () => {
       homeScore: 2,
       awayScore: 1,
       status: "live" as const,
+      homeLogo: "/man-city.png",
+      awayLogo: "/brighton.png",
     },
     {
       id: "4",
@@ -49,6 +55,8 @@ const Index = () => {
       homeScore: 1,
       awayScore: 0,
       status: "live" as const,
+      homeLogo: "/wolves.png",
+      awayLogo: "/leicester.png",
     },
   ];
 
