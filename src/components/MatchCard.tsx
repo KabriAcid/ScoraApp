@@ -80,19 +80,14 @@ export const MatchCard = ({
                   {awayScore}
                 </span>
               </div>
-              {status === "live" && (
+              {status === "live" && matchTime && (
                 <div className="mt-2 flex flex-col items-center gap-2">
-                  <Badge className="bg-success text-success-foreground px-3 py-1">
-                    LIVE
-                  </Badge>
-                  {matchTime && (
                     <Badge
                       variant="outline"
                       className="border-success/30 bg-success/10 text-success"
                     >
                       {matchTime}'
                     </Badge>
-                  )}
                 </div>
               )}
             </div>
