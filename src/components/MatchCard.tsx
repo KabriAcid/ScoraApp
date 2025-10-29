@@ -11,6 +11,7 @@ interface MatchCardProps {
   league: string;
   homeLogo?: string;
   awayLogo?: string;
+  matchTime?: number;
   onClick?: () => void;
 }
 
@@ -23,6 +24,7 @@ export const MatchCard = ({
   league,
   homeLogo,
   awayLogo,
+  matchTime,
   onClick,
 }: MatchCardProps) => {
   return (
@@ -70,16 +72,28 @@ export const MatchCard = ({
               </div>
             </div>
 
-            <div className="flex items-center gap-4 mx-4">
-              <span className="text-4xl font-bold text-primary-foreground">
-                {homeScore}
-              </span>
-              <span className="text-3xl font-bold text-primary-foreground/50">
-                :
-              </span>
-              <span className="text-4xl font-bold text-primary-foreground">
-                {awayScore}
-              </span>
+            <div className="flex flex-col items-center gap-2 mx-4">
+              <div className="flex items-center gap-4">
+                <span className="text-4xl font-bold text-primary-foreground">
+                  {homeScore}
+                </span>
+                <span className="text-3xl font-bold text-primary-foreground/50">
+                  :
+                </span>
+                <span className="text-4xl font-bold text-primary-foreground">
+                  {awayScore}
+                </span>
+              </div>
+              {status === "live" && matchTime && (
+                <div className="mt-2">
+                  <Badge
+                    variant="outline"
+                    className="border-success/30 bg-success/10 text-success"
+                  >
+                    {matchTime}'
+                  </Badge>
+                </div>
+              )}
             </div>
 
             <div className="flex flex-col items-center gap-2 flex-1">
