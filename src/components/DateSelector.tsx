@@ -1,23 +1,19 @@
 import { cn } from "@/lib/utils";
-import { fixturesCalendar } from "@/data/fixturesCalendar";
 
 interface DateSelectorProps {
   selectedDate: number;
   onDateChange: (date: number) => void;
+  fixturesCalendar: { day: string; date: number }[]; // Add fixturesCalendar as a prop
 }
 
 export const DateSelector = ({
   selectedDate,
   onDateChange,
+  fixturesCalendar, // Use fixturesCalendar from props
 }: DateSelectorProps) => {
-  const dates = fixturesCalendar.map((fixture) => ({
-    day: fixture.day, // Use the day directly
-    date: fixture.date, // Use the date directly as a number
-  }));
-
   return (
     <div className="flex gap-2 overflow-x-auto pb-2 px-1">
-      {dates.map(({ date, day }, index) => (
+      {fixturesCalendar.map(({ date, day }) => (
         <button
           key={date}
           onClick={() => onDateChange(date)}

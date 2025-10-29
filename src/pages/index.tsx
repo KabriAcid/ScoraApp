@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Bell, Search, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MatchCard } from "@/components/MatchCard";
@@ -6,12 +6,12 @@ import { MatchListItem } from "@/components/MatchListItem";
 import { Navigation } from "@/components/Navigation";
 import { DateSelector } from "@/components/DateSelector";
 import { MatchDetail } from "./match-detail";
-import { fixturesCalendar } from "@/data/fixturesCalendar";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("home");
   const [selectedDate, setSelectedDate] = useState(17);
   const [selectedMatch, setSelectedMatch] = useState<string | null>(null);
+  const [fixturesCalendar, setFixturesCalendar] = useState([]);
 
   const featuredMatch = {
     id: "1",
@@ -50,7 +50,19 @@ const Index = () => {
     },
   ];
 
-  const month = fixturesCalendar[0]?.month || "";
+  useEffect(() => {
+    const fetchFixtures = async () => {
+      try {
+        const response = await fetch("/api/fixtures");
+        const data = await response.json();
+        setFixturesCalendar(data);
+      } catch (error) {
+        console.error("Failed to fetch fixtures:", error);
+      }
+    };
+
+    fetchFixtures();
+  }, []);
 
   if (selectedMatch) {
     return <MatchDetail onBack={() => setSelectedMatch(null)} />;
@@ -80,13 +92,25 @@ const Index = () => {
         <div className="px-4 pb-4">
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-medium text-muted-foreground">
-              {month}
+              {fixturesCalendar[0]?.month || ""}
             </span>
           </div>
-          <DateSelector
-            selectedDate={selectedDate}
-            onDateChange={setSelectedDate}
-          />
+          <div className="flex gap-2 overflow-x-auto pb-2 px-1">
+            {fixturesCalendar.map(({ date, day }) => (
+              <button
+                key={date}
+                onClick={() => setSelectedDate(date)}
+                className={
+                  selectedDate === date
+                    ? "bg-accent text-accent-foreground shadow-lg scale-105 flex flex-col items-center justify-center min-w-[48px] h-16 rounded-xl transition-all"
+                    : "bg-card text-foreground hover:bg-secondary flex flex-col items-center justify-center min-w-[48px] h-16 rounded-xl transition-all"
+                }
+              >
+                <span className="text-xs font-medium mb-1">{day}</span>
+                <span className="text-lg font-bold">{date}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </header>
 
@@ -123,30 +147,6 @@ const Index = () => {
                 onClick={() => setSelectedMatch(match.id)}
               />
             ))}
-          </div>
-        </section>
-
-        {/* Calendar */}
-        <section>
-          <div className="flex flex-col gap-4">
-            <span className="text-lg font-bold text-muted-foreground">
-              {month}
-            </span>
-            <div className="grid grid-cols-2 gap-4">
-              {fixturesCalendar.map((fixture) => (
-                <div
-                  key={fixture.date}
-                  className="p-4 bg-card rounded-lg shadow-md text-center"
-                >
-                  <span className="block text-sm font-medium text-muted-foreground">
-                    {fixture.day}
-                  </span>
-                  <span className="block text-lg font-bold">
-                    {fixture.date}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
       </main>
