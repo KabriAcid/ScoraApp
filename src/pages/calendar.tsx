@@ -1,30 +1,18 @@
+
 'use client';
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
-import { calendarMatchesData, pastCalendarMatchesData } from "@/data/calendarMatches";
+import { calendarMatchesData, pastCalendarMatchesData, CalendarMatch } from "@/data/calendarMatches";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 
-interface Match {
-  id: string;
-  date: string;
-  homeTeam: string;
-  awayTeam: string;
-  time?: string;
-  homeLogo: string;
-  awayLogo: string;
-  homeScore?: number;
-  awayScore?: number;
-  status: "upcoming" | "finished";
-}
-
 interface MatchGroup {
   date: string;
-  matches: Match[];
+  matches: CalendarMatch[];
 }
 
 const CalendarMatchItemSkeleton = ({ isLast }: { isLast: boolean }) => (
@@ -43,11 +31,11 @@ const CalendarMatchItemSkeleton = ({ isLast }: { isLast: boolean }) => (
     </div>
   );
 
-const CalendarMatchItem = ({ match, isLast }: { match: Match, isLast: boolean }) => (
+const CalendarMatchItem = ({ match, isLast }: { match: CalendarMatch, isLast: boolean }) => (
   <div className={cn("flex items-center justify-between p-4", !isLast && "border-b border-border")}>
     <div className="flex items-center gap-4 flex-1 justify-end">
-      <span className="font-semibold text-sm text-right">{match.homeTeam}</span>
-      <Image src={match.homeLogo} alt={match.homeTeam} width={28} height={28} />
+      <span className="font-semibold text-sm text-right">{match.homeTeam.name}</span>
+      <Image src={match.homeLogo} alt={match.homeTeam.name} width={28} height={28} />
     </div>
     <div className="text-center mx-4">
       {match.status === 'finished' ? (
@@ -63,8 +51,8 @@ const CalendarMatchItem = ({ match, isLast }: { match: Match, isLast: boolean })
       )}
     </div>
     <div className="flex items-center gap-4 flex-1">
-      <Image src={match.awayLogo} alt={match.awayTeam} width={28} height={28} />
-      <span className="font-semibold text-sm">{match.awayTeam}</span>
+      <Image src={match.awayLogo} alt={match.awayTeam.name} width={28} height={28} />
+      <span className="font-semibold text-sm">{match.awayTeam.name}</span>
     </div>
   </div>
 );
@@ -90,9 +78,9 @@ const CalendarPage = () => {
         if (!acc[date]) {
           acc[date] = [];
         }
-        acc[date].push(match as Match);
+        acc[date].push(match as CalendarMatch);
         return acc;
-      }, {} as Record<string, Match[]>);
+      }, {} as Record<string, CalendarMatch[]>);
 
       const groups: MatchGroup[] = Object.keys(groupedMatches).map(date => ({
         date: date,
@@ -127,17 +115,21 @@ const CalendarPage = () => {
       <main className="p-4 space-y-4">
       {loading ? (
           <div className="space-y-4">
-            <Skeleton className="h-6 w-32 mb-2" />
-            <Card>
-                <CalendarMatchItemSkeleton isLast={false} />
-                <CalendarMatchItemSkeleton isLast={false} />
-                <CalendarMatchItemSkeleton isLast={true} />
-            </Card>
-             <Skeleton className="h-6 w-32 mb-2" />
-            <Card>
-                <CalendarMatchItemSkeleton isLast={false} />
-                <CalendarMatchItemSkeleton isLast={true} />
-            </Card>
+            <div>
+              <Skeleton className="h-6 w-32 mb-2" />
+              <Card>
+                  <CalendarMatchItemSkeleton isLast={false} />
+                  <CalendarMatchItemSkeleton isLast={false} />
+                  <CalendarMatchItemSkeleton isLast={true} />
+              </Card>
+            </div>
+            <div>
+              <Skeleton className="h-6 w-32 mb-2" />
+              <Card>
+                  <CalendarMatchItemSkeleton isLast={false} />
+                  <CalendarMatchItemSkeleton isLast={true} />
+              </Card>
+            </div>
           </div>
         ) : (
           matchGroups.map((group, groupIndex) => (

@@ -1,9 +1,11 @@
+
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import { PremierLeagueClub } from "@/data/clubs";
 
 interface MatchListItemProps {
-  homeTeam: string;
-  awayTeam: string;
+  homeTeam: PremierLeagueClub;
+  awayTeam: PremierLeagueClub;
   homeScore: number;
   awayScore: number;
   status: "live" | "finished" | "upcoming";
@@ -22,6 +24,9 @@ export const MatchListItem = ({
   awayLogo,
   onClick,
 }: MatchListItemProps) => {
+  const homeBadge = homeLogo || homeTeam.badgeUrl;
+  const awayBadge = awayLogo || awayTeam.badgeUrl;
+
   return (
     <div
       className="flex items-center justify-between p-4 bg-card rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer"
@@ -29,19 +34,19 @@ export const MatchListItem = ({
     >
       <div className="flex items-center gap-3 flex-1">
         <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-xs font-bold overflow-hidden">
-          {homeLogo ? (
+          {homeBadge ? (
             <Image
-              src={homeLogo}
-              alt={`${homeTeam} logo`}
+              src={homeBadge}
+              alt={`${homeTeam.name} logo`}
               width={32}
               height={32}
               className="object-contain"
             />
           ) : (
-            homeTeam.substring(0, 2).toUpperCase()
+            homeTeam.shortName.substring(0, 2).toUpperCase()
           )}
         </div>
-        <span className="font-medium text-sm">{homeTeam}</span>
+        <span className="font-medium text-sm">{homeTeam.name}</span>
       </div>
 
       <div className="flex items-center gap-3 mx-4">
@@ -70,18 +75,18 @@ export const MatchListItem = ({
       </div>
 
       <div className="flex items-center gap-3 flex-1 justify-end">
-        <span className="font-medium text-sm text-right">{awayTeam}</span>
+        <span className="font-medium text-sm text-right">{awayTeam.name}</span>
         <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-xs font-bold overflow-hidden">
-          {awayLogo ? (
+          {awayBadge ? (
             <Image
-              src={awayLogo}
-              alt={`${awayTeam} logo`}
+              src={awayBadge}
+              alt={`${awayTeam.name} logo`}
               width={32}
               height={32}
               className="object-contain"
             />
           ) : (
-            awayTeam.substring(0, 2).toUpperCase()
+            awayTeam.shortName.substring(0, 2).toUpperCase()
           )}
         </div>
       </div>

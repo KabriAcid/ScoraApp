@@ -1,3 +1,4 @@
+
 'use client';
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -14,13 +15,11 @@ import { Card } from "@/components/ui/card";
 import { standingsData } from "@/data/standings";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Navigation } from "@/components/Navigation";
+import { PremierLeagueClub } from "@/data/clubs";
 
 interface TeamStanding {
   position: number;
-  team: {
-    name: string;
-    logo: string;
-  };
+  team: PremierLeagueClub;
   played: number;
   win: number;
   draw: number;
@@ -118,14 +117,14 @@ const StandingsPage = () => {
                     <TableCell className="p-2">
                       <div className="flex items-center gap-2">
                         <Image
-                          src={entry.team.logo}
+                          src={entry.team.badgeUrl}
                           alt={entry.team.name}
                           width={24}
                           height={24}
                           className="object-contain"
                         />
                         <span className="hidden sm:inline">{entry.team.name}</span>
-                        <span className="sm:hidden">{entry.team.name.substring(0,3).toUpperCase()}</span>
+                        <span className="sm:hidden">{entry.team.shortName.toUpperCase()}</span>
                       </div>
                     </TableCell>
                     <TableCell className="text-right p-2">{entry.played}</TableCell>

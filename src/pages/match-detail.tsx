@@ -1,5 +1,6 @@
+
 'use client';
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/router";
 import { useEffect, useState } from "react";
 import { ArrowLeft, MoreVertical, Target, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,6 +11,7 @@ import Image from "next/image";
 import { TeamLineup } from "@/components/TeamLineup";
 import { matchesData } from "@/data/matches";
 import Loading from "@/components/Loading";
+import { PremierLeagueClub } from "@/data/clubs";
 
 const MatchDetailPage = () => {
   const router = useRouter();
@@ -77,9 +79,9 @@ const MatchDetailPage = () => {
         <div className="flex items-center justify-center gap-8 mb-4">
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center mb-2 font-bold text-2xl text-foreground overflow-hidden">
-              <Image src={homeLogo} alt={`${homeTeam} logo`} width={56} height={56} className="object-contain"/>
+              <Image src={homeLogo} alt={`${homeTeam.name} logo`} width={56} height={56} className="object-contain"/>
             </div>
-            <span className="text-sm font-medium">{homeTeam}</span>
+            <span className="text-sm font-medium">{homeTeam.name}</span>
           </div>
 
           <div className="flex items-center gap-3">
@@ -90,9 +92,9 @@ const MatchDetailPage = () => {
 
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center mb-2 font-bold text-2xl text-foreground overflow-hidden">
-              <Image src={awayLogo} alt={`${awayTeam} logo`} width={56} height={56} className="object-contain"/>
+              <Image src={awayLogo} alt={`${awayTeam.name} logo`} width={56} height={56} className="object-contain"/>
             </div>
-            <span className="text-sm font-medium">{awayTeam}</span>
+            <span className="text-sm font-medium">{awayTeam.name}</span>
           </div>
         </div>
       </div>
@@ -129,13 +131,13 @@ const MatchDetailPage = () => {
                     </div>
                     <div>
                       <p className="text-sm font-semibold">{homeTeamData.manager}</p>
-                      <p className="text-xs text-muted-foreground">{homeTeam} Manager</p>
+                      <p className="text-xs text-muted-foreground">{homeTeam.name} Manager</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="text-right">
                       <p className="text-sm font-semibold">{awayTeamData.manager}</p>
-                      <p className="text-xs text-muted-foreground">{awayTeam} Manager</p>
+                      <p className="text-xs text-muted-foreground">{awayTeam.name} Manager</p>
                     </div>
                     <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
                       <span className="text-sm font-bold text-red-600">EH</span>

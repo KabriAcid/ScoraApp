@@ -1,10 +1,12 @@
+
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import { PremierLeagueClub } from "@/data/clubs";
 
 interface MatchCardProps {
-  homeTeam: string;
-  awayTeam: string;
+  homeTeam: PremierLeagueClub;
+  awayTeam: PremierLeagueClub;
   homeScore: number;
   awayScore: number;
   status: "live" | "finished" | "upcoming";
@@ -29,6 +31,9 @@ export const MatchCard = ({
   matchWeek,
   onClick,
 }: MatchCardProps) => {
+  const homeBadge = homeLogo || homeTeam.badgeUrl;
+  const awayBadge = awayLogo || awayTeam.badgeUrl;
+
   return (
     <div>
       <Card
@@ -48,21 +53,21 @@ export const MatchCard = ({
           <div className="flex items-center justify-between">
             <div className="flex flex-col items-center gap-2 flex-1">
               <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center font-bold text-lg overflow-hidden">
-                {homeLogo ? (
+                {homeBadge ? (
                   <Image
-                    src={homeLogo}
-                    alt={`${homeTeam} logo`}
+                    src={homeBadge}
+                    alt={`${homeTeam.name} logo`}
                     width={56}
                     height={56}
                     className="object-contain"
                   />
                 ) : (
-                  homeTeam.substring(0, 3).toUpperCase()
+                  homeTeam.shortName.substring(0, 3).toUpperCase()
                 )}
               </div>
               <div className="text-center">
                 <span className="text-primary-foreground font-semibold">
-                  {homeTeam}
+                  {homeTeam.name}
                 </span>
                 <p className="text-xs text-muted-foreground">Home</p>
               </div>
@@ -94,21 +99,21 @@ export const MatchCard = ({
 
             <div className="flex flex-col items-center gap-2 flex-1">
               <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center font-bold text-lg overflow-hidden">
-                {awayLogo ? (
+                {awayBadge ? (
                   <Image
-                    src={awayLogo}
-                    alt={`${awayTeam} logo`}
+                    src={awayBadge}
+                    alt={`${awayTeam.name} logo`}
                     width={56}
                     height={56}
                     className="object-contain"
                   />
                 ) : (
-                  awayTeam.substring(0, 3).toUpperCase()
+                  awayTeam.shortName.substring(0, 3).toUpperCase()
                 )}
               </div>
               <div className="text-center">
                 <span className="text-primary-foreground font-semibold">
-                  {awayTeam}
+                  {awayTeam.name}
                 </span>
                 <p className="text-xs text-muted-foreground">Away</p>
               </div>

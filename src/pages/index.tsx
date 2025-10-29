@@ -8,7 +8,7 @@ import { MatchListItem } from "@/components/MatchListItem";
 import { Navigation } from "@/components/Navigation";
 import { fixturesCalendar } from "@/data/fixturesCalendar";
 import { matchesData } from "@/data/matches";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 
 const Index = () => {
   const [selectedDate, setSelectedDate] = useState(17);
@@ -97,6 +97,8 @@ const Index = () => {
               <MatchListItem
                 key={match.id}
                 {...match}
+                homeTeam={match.homeTeam}
+                awayTeam={match.awayTeam}
                 onClick={() => handleMatchClick(match.id)}
               />
             ))}

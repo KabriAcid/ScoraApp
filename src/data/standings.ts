@@ -1,10 +1,10 @@
+
+import { clubMap } from "./clubs";
+
 export const standingsData = [
   {
     position: 1,
-    team: {
-      name: "Arsenal",
-      logo: "https://ssl.gstatic.com/onebox/media/sports/logos/4us2nCgl6kgZc0t3hpW75Q_96x96.png",
-    },
+    team: clubMap.get("Arsenal")!,
     played: 9,
     win: 7,
     draw: 1,
@@ -17,10 +17,7 @@ export const standingsData = [
   },
   {
     position: 2,
-    team: {
-      name: "Bournemouth",
-      logo: "https://ssl.gstatic.com/onebox/media/sports/logos/4us2nCgl6kgZc0t3hpW75Q_96x96.png",
-    },
+    team: clubMap.get("AFC Bournemouth")!,
     played: 9,
     win: 5,
     draw: 3,
@@ -33,10 +30,7 @@ export const standingsData = [
   },
   {
     position: 3,
-    team: {
-      name: "Tottenham Hotspur",
-      logo: "https://ssl.gstatic.com/onebox/media/sports/logos/k3Q_m6eDR9k-E-d2zV-B-g_96x96.png",
-    },
+    team: clubMap.get("Tottenham Hotspur")!,
     played: 9,
     win: 5,
     draw: 2,
@@ -49,10 +43,7 @@ export const standingsData = [
   },
   {
     position: 4,
-    team: {
-      name: "Sunderland",
-      logo: "https://ssl.gstatic.com/onebox/media/sports/logos/KnXb4l-4V1lU2Lde162oYw_96x96.png",
-    },
+    team: clubMap.get("Sunderland")!,
     played: 9,
     win: 5,
     draw: 2,
@@ -65,10 +56,7 @@ export const standingsData = [
   },
   {
     position: 5,
-    team: {
-      name: "Manchester City",
-      logo: "https://ssl.gstatic.com/onebox/media/sports/logos/z44l-a0W1v5FmgP1MfYGGA_96x96.png",
-    },
+    team: clubMap.get("Manchester City")!,
     played: 9,
     win: 5,
     draw: 1,
@@ -81,10 +69,7 @@ export const standingsData = [
   },
   {
     position: 6,
-    team: {
-      name: "Manchester United",
-      logo: "https://ssl.gstatic.com/onebox/media/sports/logos/udQ6ns69i-jBs_RxASrasQ_96x96.png",
-    },
+    team: clubMap.get("Manchester United")!,
     played: 9,
     win: 5,
     draw: 1,

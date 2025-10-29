@@ -1,110 +1,128 @@
 
-export const calendarMatchesData = [
+import { clubMap, PremierLeagueClub } from "./clubs";
+
+export type MatchStatus = "upcoming" | "finished";
+
+export interface CalendarMatch {
+  id: string;
+  date: string;
+  homeTeam: PremierLeagueClub;
+  awayTeam: PremierLeagueClub;
+  time?: string;
+  homeLogo: string;
+  awayLogo: string;
+  homeScore?: number;
+  awayScore?: number;
+  status: MatchStatus;
+}
+
+
+export const calendarMatchesData: CalendarMatch[] = [
   {
     id: "101",
     date: "Sat 1 Nov",
-    homeTeam: "Brighton",
-    awayTeam: "Leeds United",
+    homeTeam: clubMap.get("Brighton & Hove Albion")!,
+    awayTeam: clubMap.get("Leeds United")!,
     time: "16:00",
-    homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/EKIe0e-ZIphOcfQAwsuEEQ_96x96.png",
-    awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/bXyDmxcDplnsoosZYs-3Yg_96x96.png",
+    homeLogo: clubMap.get("Brighton & Hove Albion")!.badgeUrl,
+    awayLogo: clubMap.get("Leeds United")!.badgeUrl,
     status: "upcoming" as const
   },
   {
     id: "102",
     date: "Sat 1 Nov",
-    homeTeam: "Burnley",
-    awayTeam: "Arsenal",
+    homeTeam: clubMap.get("Burnley")!,
+    awayTeam: clubMap.get("Arsenal")!,
     time: "16:00",
-    homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/teLLSaMXim_8BA1d47-4lA_96x96.png",
-    awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/4us2nCgl6kgZc0t3hpW75Q_96x96.png",
+    homeLogo: clubMap.get("Burnley")!.badgeUrl,
+    awayLogo: clubMap.get("Arsenal")!.badgeUrl,
     status: "upcoming" as const
   },
   {
     id: "103",
     date: "Sat 1 Nov",
-    homeTeam: "Crystal Palace",
-    awayTeam: "Brentford",
+    homeTeam: clubMap.get("Crystal Palace")!,
+    awayTeam: clubMap.get("Brentford")!,
     time: "16:00",
-    homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/8piQOz-DP3EwS27tYYP39A_96x96.png",
-    awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/QOUce0-24a2oKsEYCSbsrw_96x96.png",
+    homeLogo: clubMap.get("Crystal Palace")!.badgeUrl,
+    awayLogo: clubMap.get("Brentford")!.badgeUrl,
     status: "upcoming" as const
   },
   {
     id: "104",
     date: "Sun 2 Nov",
-    homeTeam: "Everton",
-    awayTeam: "West Ham",
+    homeTeam: clubMap.get("Everton")!,
+    awayTeam: clubMap.get("West Ham United")!,
     time: "14:00",
-    homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/C3J48t3vBP5L2Pceh9eAhA_96x96.png",
-    awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/bXyDmxcDplnsoosZYs-3Yg_96x96.png",
+    homeLogo: clubMap.get("Everton")!.badgeUrl,
+    awayLogo: clubMap.get("West Ham United")!.badgeUrl,
     status: "upcoming" as const
   },
   {
     id: "105",
     date: "Sun 2 Nov",
-    homeTeam: "Newcastle",
-    awayTeam: "Southampton",
+    homeTeam: clubMap.get("Newcastle United")!,
+    awayTeam: clubMap.get("Southampton")!,
     time: "14:00",
-    homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/96_osd_v_nB3I_-n9125Yw_96x96.png",
-    awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/yKP-v9iKNfN2j2j2y29loA_96x96.png",
+    homeLogo: clubMap.get("Newcastle United")!.badgeUrl,
+    awayLogo: clubMap.get("Southampton")!.badgeUrl,
     status: "upcoming" as const
   },
     {
     id: "106",
     date: "Mon 3 Nov",
-    homeTeam: "Wolves",
-    awayTeam: "Aston Villa",
+    homeTeam: clubMap.get("Wolverhampton Wanderers")!,
+    awayTeam: clubMap.get("Aston Villa")!,
     time: "20:00",
-    homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/ZW73-Q34I4FNsD25m5fO_w_96x96.png",
-    awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/uyNNelfnFvC9ADKG893qRA_96x96.png",
+    homeLogo: clubMap.get("Wolverhampton Wanderers")!.badgeUrl,
+    awayLogo: clubMap.get("Aston Villa")!.badgeUrl,
     status: "upcoming" as const
   }
 ];
 
-export const pastCalendarMatchesData = [
+export const pastCalendarMatchesData: CalendarMatch[] = [
   {
     id: "201",
     date: "Sat 25 Oct",
-    homeTeam: "Man City",
-    awayTeam: "Chelsea",
+    homeTeam: clubMap.get("Manchester City")!,
+    awayTeam: clubMap.get("Chelsea")!,
     homeScore: 2,
     awayScore: 2,
-    homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/z44l-a0W1v5FmgP1MfYGGA_96x96.png",
-    awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/0i2_A1PMGHflrIe3umGD2A_96x96.png",
+    homeLogo: clubMap.get("Manchester City")!.badgeUrl,
+    awayLogo: clubMap.get("Chelsea")!.badgeUrl,
     status: "finished" as const
   },
   {
     id: "202",
     date: "Sat 25 Oct",
-    homeTeam: "Liverpool",
-    awayTeam: "Man Utd",
+    homeTeam: clubMap.get("Liverpool")!,
+    awayTeam: clubMap.get("Manchester United")!,
     homeScore: 0,
     awayScore: 1,
-    homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/0iHbx-InIB_Rbb3v0pS2JQ_96x96.png",
-    awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/udQ6ns69i-jBs_RxASrasQ_96x96.png",
+    homeLogo: clubMap.get("Liverpool")!.badgeUrl,
+    awayLogo: clubMap.get("Manchester United")!.badgeUrl,
     status: "finished" as const
   },
   {
     id: "203",
     date: "Sun 26 Oct",
-    homeTeam: "Arsenal",
-    awayTeam: "Tottenham",
+    homeTeam: clubMap.get("Arsenal")!,
+    awayTeam: clubMap.get("Tottenham Hotspur")!,
     homeScore: 3,
     awayScore: 1,
-    homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/4us2nCgl6kgZc0t3hpW75Q_96x96.png",
-    awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/k3Q_m6eDR9k-E-d2zV-B-g_96x96.png",
+    homeLogo: clubMap.get("Arsenal")!.badgeUrl,
+    awayLogo: clubMap.get("Tottenham Hotspur")!.badgeUrl,
     status: "finished" as const
   },
    {
     id: "204",
     date: "Mon 27 Oct",
-    homeTeam: "Fulham",
-    awayTeam: "Everton",
+    homeTeam: clubMap.get("Fulham")!,
+    awayTeam: clubMap.get("Everton")!,
     homeScore: 0,
     awayScore: 0,
-    homeLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/2-4k3vcfwK--d_r-0bf16A_96x96.png",
-    awayLogo: "https://ssl.gstatic.com/onebox/media/sports/logos/C3J48t3vBP5L2Pceh9eAhA_96x96.png",
+    homeLogo: clubMap.get("Fulham")!.badgeUrl,
+    awayLogo: clubMap.get("Everton")!.badgeUrl,
     status: "finished" as const
   }
 ]
