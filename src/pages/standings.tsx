@@ -99,14 +99,14 @@ const StandingsPage = () => {
                   <TableHead className="w-[40px] p-2">Pos</TableHead>
                   <TableHead className="p-2">Team</TableHead>
                   <TableHead className="text-right p-2">Pl</TableHead>
-                  <TableHead className="text-right p-2 hidden sm:table-cell">W</TableHead>
-                  <TableHead className="text-right p-2 hidden sm:table-cell">D</TableHead>
-                  <TableHead className="text-right p-2 hidden sm:table-cell">L</TableHead>
-                  <TableHead className="text-right p-2 hidden md:table-cell">GF</TableHead>
-                  <TableHead className="text-right p-2 hidden md:table-cell">GA</TableHead>
+                  <TableHead className="text-right p-2">W</TableHead>
+                  <TableHead className="text-right p-2">D</TableHead>
+                  <TableHead className="text-right p-2">L</TableHead>
+                  <TableHead className="text-right p-2 hidden sm:table-cell">GF</TableHead>
+                  <TableHead className="text-right p-2 hidden sm:table-cell">GA</TableHead>
                   <TableHead className="text-right p-2">GD</TableHead>
                   <TableHead className="text-right p-2">Pts</TableHead>
-                  <TableHead className="p-2 text-center hidden lg:table-cell">Form</TableHead>
+                  <TableHead className="p-2 text-center hidden md:table-cell">Form</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -127,14 +127,14 @@ const StandingsPage = () => {
                       </div>
                     </TableCell>
                     <TableCell className="text-right p-2">{entry.played}</TableCell>
-                    <TableCell className="text-right p-2 hidden sm:table-cell">{entry.win}</TableCell>
-                    <TableCell className="text-right p-2 hidden sm:table-cell">{entry.draw}</TableCell>
-                    <TableCell className="text-right p-2 hidden sm:table-cell">{entry.loss}</TableCell>
-                    <TableCell className="text-right p-2 hidden md:table-cell">{entry.gf}</TableCell>
-                    <TableCell className="text-right p-2 hidden md:table-cell">{entry.ga}</TableCell>
+                    <TableCell className="text-right p-2">{entry.win}</TableCell>
+                    <TableCell className="text-right p-2">{entry.draw}</TableCell>
+                    <TableCell className="text-right p-2">{entry.loss}</TableCell>
+                    <TableCell className="text-right p-2 hidden sm:table-cell">{entry.gf}</TableCell>
+                    <TableCell className="text-right p-2 hidden sm:table-cell">{entry.ga}</TableCell>
                     <TableCell className="text-right p-2">{entry.gd}</TableCell>
                     <TableCell className="text-right font-bold p-2">{entry.points}</TableCell>
-                    <TableCell className="hidden lg:table-cell p-2">
+                    <TableCell className="hidden md:table-cell p-2">
                       <div className="flex gap-1 justify-center">
                         {entry.form.map((result, index) => (
                           <FormBadge key={index} result={result} />
