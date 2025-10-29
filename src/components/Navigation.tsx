@@ -1,12 +1,24 @@
+'use client';
+
 import Link from "next/link";
 import { Home, TrendingUp, Calendar, User } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/router";
 
-interface NavigationProps {
-  activeTab: string;
-}
+export const Navigation = ({ activeTab: activeTabProp }: { activeTab: string }) => {
+  const router = useRouter();
+  
+  const getActiveTab = () => {
+    const path = router.pathname;
+    if (path === "/") return "home";
+    if (path.startsWith("/standings")) return "standings";
+    if (path.startsWith("/calendar")) return "calendar";
+    if (path.startsWith("/profile")) return "profile";
+    return activeTabProp;
+  }
 
-export const Navigation = ({ activeTab }: NavigationProps) => {
+  const activeTab = getActiveTab();
+
   const tabs = [
     { id: "home", href: "/", icon: Home, label: "Home" },
     { id: "standings", href: "/standings", icon: TrendingUp, label: "Standings" },

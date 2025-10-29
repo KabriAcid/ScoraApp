@@ -1,5 +1,6 @@
+'use client';
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Bell, Search, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MatchCard } from "@/components/MatchCard";
@@ -12,15 +13,7 @@ import { useRouter } from "next/router";
 
 const Index = () => {
   const [selectedDate, setSelectedDate] = useState(17);
-  const [loading, setLoading] = useState(true);
   const router = useRouter();
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleMatchClick = (matchId: string) => {
     router.push(`/match-detail?id=${matchId}`);
@@ -28,15 +21,6 @@ const Index = () => {
 
   const featuredMatch = matchesData.find((m) => m.featured);
   const liveMatches = matchesData.filter((m) => !m.featured);
-
-  const getActiveTab = () => {
-    const path = router.pathname;
-    if (path === "/") return "home";
-    if (path === "/standings") return "standings";
-    if (path === "/calendar") return "calendar";
-    if (path === "/profile") return "profile";
-    return "home";
-  };
 
   return (
     <div className="min-h-screen bg-background pb-20">
@@ -86,62 +70,43 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="p-4 space-y-6">
-        {loading ? (
-          <>
-            <section>
-              <Skeleton className="h-8 w-1/3 mb-4" />
-              <Skeleton className="h-48 w-full rounded-xl" />
-            </section>
-            <section>
-              <Skeleton className="h-8 w-1/3 mb-4" />
-              <div className="space-y-3">
-                <Skeleton className="h-20 w-full rounded-xl" />
-                <Skeleton className="h-20 w-full rounded-xl" />
-                <Skeleton className="h-20 w-full rounded-xl" />
-              </div>
-            </section>
-          </>
-        ) : (
-          <>
-            {featuredMatch && (
-              <section>
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-lg font-bold">Live Match</h2>
-                </div>
-                <MatchCard
-                  {...featuredMatch}
-                  onClick={() => handleMatchClick(featuredMatch.id)}
-                />
-              </section>
-            )}
-
-            <section>
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-bold">Today Match</h2>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-accent hover:text-accent"
-                >
-                  View All →
-                </Button>
-              </div>
-              <div className="space-y-3">
-                {liveMatches.map((match) => (
-                  <MatchListItem
-                    key={match.id}
-                    {...match}
-                    onClick={() => handleMatchClick(match.id)}
-                  />
-                ))}
-              </div>
-            </section>
-          </>
+        {featuredMatch && (
+          <section>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-bold">Live Match</h2>
+            </div>
+            <MatchCard
+              {...featuredMatch}
+              onClick={() => handleMatchClick(featuredMatch.id)}
+            />
+          </section>
         )}
+
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-bold">Today Match</h2>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-accent hover:text-accent-foreground"
+            >
+              View All →
+            </Button>
+          </div>
+          <div className="space-y-3">
+            {liveMatches.map((match) => (
+              <MatchListItem
+                key={match.id}
+                {...match}
+                onClick={() => handleMatchClick(match.id)}
+              />
+            ))}
+          </div>
+        </section>
       </main>
 
       {/* Navigation */}
-      <Navigation activeTab={getActiveTab()} />
+      <Navigation activeTab={"home"} />
     </div>
   );
 };

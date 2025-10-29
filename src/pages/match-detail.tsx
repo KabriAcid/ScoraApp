@@ -1,4 +1,4 @@
-
+'use client';
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { ArrowLeft, MoreVertical, Target, Activity } from "lucide-react";
