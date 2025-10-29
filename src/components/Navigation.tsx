@@ -1,5 +1,4 @@
-
-'use client';
+"use client";
 
 import Link from "next/link";
 import { Home, TrendingUp, Calendar, User } from "lucide-react";
@@ -10,18 +9,24 @@ export const Navigation = () => {
   const pathname = usePathname();
 
   const getActiveTab = () => {
+    if (!pathname) return "home";
     if (pathname === "/") return "home";
     if (pathname.startsWith("/standings")) return "standings";
     if (pathname.startsWith("/calendar")) return "calendar";
     if (pathname.startsWith("/profile")) return "profile";
     return "home";
-  }
+  };
 
   const activeTab = getActiveTab();
 
   const tabs = [
     { id: "home", href: "/", icon: Home, label: "Home" },
-    { id: "standings", href: "/standings", icon: TrendingUp, label: "Standings" },
+    {
+      id: "standings",
+      href: "/standings",
+      icon: TrendingUp,
+      label: "Standings",
+    },
     { id: "calendar", href: "/calendar", icon: Calendar, label: "Calendar" },
     { id: "profile", href: "/profile", icon: User, label: "Profile" },
   ];
