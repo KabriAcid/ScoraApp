@@ -86,15 +86,7 @@ const StandingsPage = () => {
 
       <main className="p-4">
         <Card className="p-4 mb-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-            <Select defaultValue="premier-league">
-              <SelectTrigger>
-                <SelectValue placeholder="League" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="premier-league">Premier League</SelectItem>
-              </SelectContent>
-            </Select>
+          <div className="grid grid-cols-1">
             <Select defaultValue="2024-2025">
               <SelectTrigger>
                 <SelectValue placeholder="Season" />
@@ -103,17 +95,6 @@ const StandingsPage = () => {
                 <SelectItem value="2024-2025">2024/25</SelectItem>
               </SelectContent>
             </Select>
-            <Select defaultValue="all">
-              <SelectTrigger>
-                <SelectValue placeholder="Home/Away" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Home & Away</SelectItem>
-              </SelectContent>
-            </Select>
-            <Button variant="ghost" size="icon">
-              <RefreshCw className="h-4 w-4" />
-            </Button>
           </div>
         </Card>
 
