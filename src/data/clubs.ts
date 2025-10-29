@@ -8,129 +8,129 @@ export interface PremierLeagueClub {
 export const premierLeagueClubs: PremierLeagueClub[] = [
   {
     name: "West Ham United",
-    shortName: "West Ham",
+    shortName: "WHU",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t21.png",
   },
   {
     name: "Leeds United",
-    shortName: "Leeds",
+    shortName: "LEE",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t2.png",
   },
   {
     name: "Arsenal",
-    shortName: "Arsenal",
+    shortName: "ARS",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t3.png",
   },
   {
     name: "Brighton & Hove Albion",
-    shortName: "Brighton",
+    shortName: "BHA",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t36.png",
   },
   {
     name: "Crystal Palace",
-    shortName: "Crystal Palace",
+    shortName: "CRY",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t31.png",
   },
   {
     name: "Brentford",
-    shortName: "Brentford",
+    shortName: "BRE",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t94.png",
   },
   {
     name: "Tottenham Hotspur",
-    shortName: "Tottenham",
+    shortName: "TOT",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t6.png",
   },
   {
     name: "Liverpool",
-    shortName: "Liverpool",
+    shortName: "LIV",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t14.png",
   },
   {
     name: "Newcastle United",
-    shortName: "Newcastle",
+    shortName: "NEW",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t4.png",
   },
   {
     name: "AFC Bournemouth",
-    shortName: "Bournemouth",
+    shortName: "BOU",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t91.png",
   },
   {
     name: "Manchester City",
-    shortName: "Man City",
+    shortName: "MCI",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t43.png",
   },
   {
     name: "Chelsea",
-    shortName: "Chelsea",
+    shortName: "CHE",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t8.png",
   },
   {
     name: "Nottingham Forest",
-    shortName: "Nott'm Forest",
+    shortName: "NFO",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t17.png",
   },
   {
     name: "Fulham",
-    shortName: "Fulham",
+    shortName: "FUL",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t54.png",
   },
   {
     name: "Aston Villa",
-    shortName: "Aston Villa",
+    shortName: "AVL",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t7.png",
   },
   {
     name: "Manchester United",
-    shortName: "Man United",
+    shortName: "MUN",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t1.png",
   },
   {
     name: "Everton",
-    shortName: "Everton",
+    shortName: "EVE",
     badgeUrl:
       "https://resources.premierleague.com/premierleague/badges/21/t11.png",
   },
     {
     name: "Wolverhampton Wanderers",
-    shortName: "Wolves",
+    shortName: "WOL",
     badgeUrl: "https://resources.premierleague.com/premierleague/badges/21/t39.png",
   },
   {
     name: "Leicester City",
-    shortName: "Leicester",
+    shortName: "LEI",
     badgeUrl: "https://resources.premierleague.com/premierleague/badges/21/t13.png",
   },
   {
     name: "Southampton",
-    shortName: "Southampton",
+    shortName: "SOU",
     badgeUrl: "https://resources.premierleague.com/premierleague/badges/21/t20.png",
   },
   {
     name: "Burnley",
-    shortName: "Burnley",
+    shortName: "BUR",
     badgeUrl: "https://resources.premierleague.com/premierleague/badges/21/t90.png",
   },
   {
     name: "Sunderland",
-    shortName: "Sunderland",
+    shortName: "SUN",
     badgeUrl: "https://resources.premierleague.com/premierleague/badges/21/t56.png"
   }
 ];
