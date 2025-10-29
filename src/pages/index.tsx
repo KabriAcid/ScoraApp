@@ -1,5 +1,5 @@
+
 'use client';
-import "./index.css";
 import { useState } from "react";
 import { Bell, Search, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
