@@ -1,7 +1,6 @@
 
 'use client';
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import {
   Table,
   TableHeader,
@@ -116,7 +115,7 @@ const StandingsPage = () => {
                     <TableCell className="font-medium p-2">{entry.position}</TableCell>
                     <TableCell className="p-2">
                       <div className="flex items-center gap-2">
-                        <Image
+                        <img
                           src={entry.team.badgeUrl}
                           alt={`${entry.team.shortName} logo`}
                           width={24}

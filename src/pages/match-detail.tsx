@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import Image from "next/image";
 import { TeamLineup } from "@/components/TeamLineup";
 import { matchesData } from "@/data/matches";
 import Loading from "@/components/Loading";
@@ -79,7 +78,7 @@ const MatchDetailPage = () => {
         <div className="flex items-center justify-center gap-8 mb-4">
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center mb-2 font-bold text-2xl text-foreground overflow-hidden">
-              <Image src={homeLogo} alt={`${homeTeam.shortName} logo`} width={56} height={56} className="object-contain"/>
+              <img src={homeLogo} alt={`${homeTeam.shortName} logo`} width={56} height={56} className="object-contain"/>
             </div>
             <span className="text-sm font-medium">{homeTeam.shortName}</span>
           </div>
@@ -92,7 +91,7 @@ const MatchDetailPage = () => {
 
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center mb-2 font-bold text-2xl text-foreground overflow-hidden">
-              <Image src={awayLogo} alt={`${awayTeam.shortName} logo`} width={56} height={56} className="object-contain"/>
+              <img src={awayLogo} alt={`${awayTeam.shortName} logo`} width={56} height={56} className="object-contain"/>
             </div>
             <span className="text-sm font-medium">{awayTeam.shortName}</span>
           </div>

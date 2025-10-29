@@ -1,6 +1,5 @@
 
 import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
 import { PremierLeagueClub } from "@/data/clubs";
 
 interface MatchListItemProps {
@@ -35,7 +34,7 @@ export const MatchListItem = ({
       <div className="flex items-center gap-3 flex-1">
         <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-xs font-bold overflow-hidden">
           {homeBadge ? (
-            <Image
+            <img
               src={homeBadge}
               alt={`${homeTeam.shortName} logo`}
               width={32}
@@ -78,7 +77,7 @@ export const MatchListItem = ({
         <span className="font-medium text-sm text-right">{awayTeam.responsiveName}</span>
         <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-xs font-bold overflow-hidden">
           {awayBadge ? (
-            <Image
+            <img
               src={awayBadge}
               alt={`${awayTeam.shortName} logo`}
               width={32}

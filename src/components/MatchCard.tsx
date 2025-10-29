@@ -1,7 +1,6 @@
 
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
 import { PremierLeagueClub } from "@/data/clubs";
 
 interface MatchCardProps {
@@ -54,7 +53,7 @@ export const MatchCard = ({
             <div className="flex flex-col items-center gap-2 flex-1">
               <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center font-bold text-lg overflow-hidden">
                 {homeBadge ? (
-                  <Image
+                  <img
                     src={homeBadge}
                     alt={`${homeTeam.shortName} logo`}
                     width={56}
@@ -100,7 +99,7 @@ export const MatchCard = ({
             <div className="flex flex-col items-center gap-2 flex-1">
               <div className="w-16 h-16 rounded-full bg-card flex items-center justify-center font-bold text-lg overflow-hidden">
                 {awayBadge ? (
-                  <Image
+                  <img
                     src={awayBadge}
                     alt={`${awayTeam.shortName} logo`}
                     width={56}
