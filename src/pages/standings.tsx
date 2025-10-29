@@ -150,7 +150,7 @@ const StandingsPage = () => {
           </Card>
         )}
       </main>
-      <Navigation activeTab={"standings"} />
+      <Navigation />
     </div>
   );
 };

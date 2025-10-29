@@ -1,5 +1,5 @@
 'use client';
-import { useRouter } from "next/router";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ArrowLeft, MoreVertical, Target, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,8 @@ import Loading from "@/components/Loading";
 
 const MatchDetailPage = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id');
   const [match, setMatch] = useState<any>(null);
 
   useEffect(() => {

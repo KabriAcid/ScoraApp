@@ -3,18 +3,17 @@
 import Link from "next/link";
 import { Home, TrendingUp, Calendar, User } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
-export const Navigation = ({ activeTab: activeTabProp }: { activeTab: string }) => {
-  const router = useRouter();
-  
+export const Navigation = () => {
+  const pathname = usePathname();
+
   const getActiveTab = () => {
-    const path = router.pathname;
-    if (path === "/") return "home";
-    if (path.startsWith("/standings")) return "standings";
-    if (path.startsWith("/calendar")) return "calendar";
-    if (path.startsWith("/profile")) return "profile";
-    return activeTabProp;
+    if (pathname === "/") return "home";
+    if (pathname.startsWith("/standings")) return "standings";
+    if (pathname.startsWith("/calendar")) return "calendar";
+    if (pathname.startsWith("/profile")) return "profile";
+    return "home";
   }
 
   const activeTab = getActiveTab();

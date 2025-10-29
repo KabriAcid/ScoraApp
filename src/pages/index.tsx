@@ -8,7 +8,7 @@ import { MatchListItem } from "@/components/MatchListItem";
 import { Navigation } from "@/components/Navigation";
 import { fixturesCalendar } from "@/data/fixturesCalendar";
 import { matchesData } from "@/data/matches";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const Index = () => {
   const [selectedDate, setSelectedDate] = useState(17);
@@ -105,7 +105,7 @@ const Index = () => {
       </main>
 
       {/* Navigation */}
-      <Navigation activeTab={"home"} />
+      <Navigation />
     </div>
   );
 };

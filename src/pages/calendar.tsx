@@ -104,7 +104,7 @@ const CalendarPage = () => {
         ))}
       </main>
 
-      <Navigation activeTab={"calendar"} />
+      <Navigation />
     </div>
   );
 };
