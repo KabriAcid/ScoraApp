@@ -42,6 +42,7 @@ export const Navigation = () => {
             <Link
               href={tab.href}
               key={tab.id}
+              prefetch={true}
               className={cn(
                 "flex flex-col items-center justify-center gap-1 flex-1 h-full transition-colors",
                 isActive
