@@ -8,11 +8,11 @@ import { MatchListItem } from "@/components/MatchListItem";
 import { Navigation } from "@/components/Navigation";
 import { fixturesCalendar } from "@/data/fixturesCalendar";
 import { matchesData } from "@/data/matches";
-import { useRouter } from "next/navigation";
+import { useInstantRouter } from "@/hooks/useInstantRouter";
 
 const Index = () => {
   const [selectedDate, setSelectedDate] = useState(17);
-  const router = useRouter();
+  const router = useInstantRouter();
 
   const handleMatchClick = (matchId: string) => {
     router.push(`/match-detail?id=${matchId}`);

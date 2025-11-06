@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  experimental: {
+    // Enable instant navigation with loading UI
+    ppr: false,
+    reactCompiler: false,
+  },
   images: {
     remotePatterns: [
       {
