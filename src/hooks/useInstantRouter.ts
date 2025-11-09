@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useRouter as useNextRouter } from 'next/navigation';
-import { useTransition } from 'react';
+import { useRouter as useNextRouter } from "next/navigation";
+import { useTransition } from "react";
 
 export function useInstantRouter() {
   const router = useNextRouter();

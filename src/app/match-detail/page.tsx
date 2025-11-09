@@ -1,5 +1,5 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ArrowLeft, MoreVertical, Target, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,9 +10,10 @@ import { TeamLineup } from "@/components/TeamLineup";
 import { matchesData } from "@/data/matches";
 import Loading from "@/components/Loading";
 import { PremierLeagueClub } from "@/data/clubs";
+import { useInstantRouter } from "@/hooks/useInstantRouter";
 
 const MatchDetailPage = () => {
-  const router = useRouter();
+  const router = useInstantRouter();
   const searchParams = useSearchParams();
   const id = searchParams?.get("id") ?? null;
   const [match, setMatch] = useState<any>(null);
